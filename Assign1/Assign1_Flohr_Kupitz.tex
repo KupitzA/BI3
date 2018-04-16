@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{ngerman}  % german documents
+\usepackage{graphicx}  % import graphics einbinden
+\usepackage{listings}  % support source code listing
+\usepackage{amsmath}  % math stuff
+\usepackage{amssymb} % 
+\usepackage{a4wide} % wide pages
+\usepackage{fancyhdr} % nice headers
+\lstset{basicstyle=\footnotesize,language=Python,numbers=left, numberstyle=\tiny, stepnumber=5,firstnumber=0, numbersep=5pt} % set up listings
+\pagestyle{fancy}             % header
+\setlength{\parindent}{0pt}   % no indentation
+
+\usepackage[pdfpagemode=None, colorlinks=true,  % url coloring
+           linkcolor=blue, urlcolor=blue, citecolor=blue, plainpages=false, 
+           pdfpagelabels,unicode]{hyperref}
+           
+% change enums style: first level (a), (b), (c)           
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+
+%lecture name
+\newcommand{\lecture}{
+	Bioinformatics III
+}           
+
+%assignment iteration
+\newcommand{\assignment}{
+	First Assignment
+}
+
+%set up names, matricle number, and email
+\newcommand{\authors}{
+  \begin{tabular}{rl}
+    \href{mailto:email1}{Alexander Flohr} & (MatrNr1)\\
+    \href{mailto:s9ankupi@stud.uni-saarland.de}{Andrea Kupitz} & (2550260)
+  \end{tabular}
+}
+
+% use to start a new exercise
+\newcommand{\exercise}[1]
+{
+  \stepcounter{subsection}
+  \subsection*{Exercise \thesubsection: #1}
+
+}
+
+\begin{document}
+\title{\Large \lecture \\ \textbf{\normalsize \assignment}}
+\author{\authors}
+
+\setlength \headheight{25pt}
+\fancyhead[R]{\begin{tabular}{r}\lecture \\ \assignment \end{tabular}}
+\fancyhead[L]{\authors}
+
+
+\setcounter{section}{1} % modify for later sheets, i.e. 2, 3, ...
+%\section{Introduction to Python and some Network Properties} % optional, note that section invocation sets the section counter + 1, so adapt the setcounter command
+\maketitle
+
+\exercise{The random network}
+\begin{enumerate}
+\item Listing \ref{ex1-1} shows source code.
+\lstinputlisting[label=ex1-1,caption={Example Listing of source code}] {Node.py}
+
+\item Listing \ref{ex1-2} shows source code.
+\lstinputlisting[label=ex1-2,caption={Example Listing of source code}] {AbstractNetwork.py}
+
+\item Listing \ref{ex1-3} shows source code.
+\lstinputlisting[label=ex1-3,caption={Example Listing of source code}] {RandomNetwork.py}
+\end{enumerate}
+
+\exercise{Degree Distribution}
+\begin{enumerate}
+\item Listing \ref{ex2-1} shows source code.
+\lstinputlisting[label=ex2-1,caption={Example Listing of source code}] {Node.py}
+
+\item Listing \ref{ex2-2} shows source code.
+\lstinputlisting[label=ex2-2,caption={Example Listing of source code}] {Node.py}
+
+\item Listing \ref{ex2-3} shows source code.
+\lstinputlisting[label=ex2-3,caption={Example Listing of source code}] {Node.py}
+\end{enumerate}
+\end{document}
