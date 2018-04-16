@@ -20,23 +20,34 @@ class AbstractNetwork:
         """
         Appends node to network
         """
+        self.nodes[node.id] = node
 
     def maxDegree(self):
         """
         Returns the maximum degree in this network
         """
+        maxdegree = 0
+        for n in self.nodes.itervalues():
+            if maxdegree < n.degree():
+                maxdegree = n.degree()
+        return maxdegree
 
     def size(self):
         """
         Returns network size (here: number of nodes)
         """
+        return len(self.nodes)
 
     def __str__(self):
         '''
         Any string-representation of the network (something simply is enough)
         '''
+        for n in self.nodes.itervalues():
+            for ref in range(n.id,len(n.nogelist())):
+                println(n + " - " + ref)
 
     def getNode(self, identifier):
         """
         Returns node according to key
         """
+        return self.nodes[identifier]
