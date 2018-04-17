@@ -36,4 +36,4 @@ class Node:
         """
         Returns id of node as string
         """
-        return self.id
+        return str(self.id)

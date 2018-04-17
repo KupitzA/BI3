@@ -42,9 +42,14 @@ class AbstractNetwork:
         '''
         Any string-representation of the network (something simply is enough)
         '''
-        for n in self.nodes.itervalues():
-            for ref in range(n.id,len(n.nogelist())):
-                println(n + " - " + ref)
+        string = ""
+        for n in self.nodes.values():
+            if len(n.nodelist) == 0:
+                string += str(n) + "\n"
+            for ref in n.nodelist:
+                if ref.id > n.id:
+                    string += str(n) + " - " + str(ref) + "\n"
+        return string
 
     def getNode(self, identifier):
         """

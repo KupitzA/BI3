@@ -11,9 +11,9 @@ class RandomNetwork(AbstractNetwork):
         1. Build a list of n nodes
         2. For i=#links steps, add a connection between for two randomly chosen nodes that are not yet connected
         """
-        for nodeid in range(0,amount_nodes):
+        for nodeid in range(0, amount_nodes):
             n = Node(nodeid)
-            self.nodes.appendNode(n)
+            self.appendNode(n)
 
         random.seed()
         if amount_nodes > 1:
@@ -23,9 +23,11 @@ class RandomNetwork(AbstractNetwork):
 
         links = 0
         while links < amount_links:
-            n1 = random.randint(0,len(self.nodes))
-            n2 = random.randint(0,len(self.nodes))
-            if n1 != n2:
+            randint1 = random.randint(0,len(self.nodes)-1)
+            randint2 = random.randint(0,len(self.nodes)-1)
+            n1 = self.getNode(randint1)
+            n2 = self.getNode(randint2)
+            if randint1 != randint2:
                 if n1.addLinkTo(n2):
                     links += 1
                     n2.addLinkTo(n1)
