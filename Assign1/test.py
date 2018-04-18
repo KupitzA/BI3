@@ -5,12 +5,16 @@ from DegreeDistribution import DegreeDistribution
 from Tools import *
 
 # main properties
-numnodes = 5
-numedges = 4
+numnodes = 100
+numedges = 300
 
 network = RandomNetwork(numnodes, numedges)
 distObject = DegreeDistribution(network)
 distNetwork = distObject.getNormalizedDistribution()
 
-bilderbuch = getPoissonDistributionHistogram(numnodes, numedges, 5)
-plotDistributionComparison([distNetwork, bilderbuch], ["Net", "Ref"], "Two ref")
+distributions = []
+distributions.append(distNetwork)
+distributions.append(getPoissonDistributionHistogram(numnodes, numedges, 10))
+names = ["REAL", "POISSON"]
+plotDistributionComparison(distributions, names, "Two ref")
+

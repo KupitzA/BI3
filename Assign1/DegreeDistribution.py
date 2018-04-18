@@ -12,7 +12,6 @@ class DegreeDistribution:
 	for i in range(0, network.size()):
 		self.histogram[network.getNode(i).degree()] += 1.0
 	# turn it into a real distribution
-	print self.histogram
 	for i in range(0, len(self.histogram)):
 		self.histogram[i] /= float(network.size())
 
