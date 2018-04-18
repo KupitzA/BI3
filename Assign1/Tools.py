@@ -20,8 +20,8 @@ def plotDistributionComparison(histograms, legend, title):
         plt.plot(range(len(h)), h, marker = 'x')
     
     # remember: never forget labels! :-)
-    plt.xlabel('')
-    plt.ylabel('')
+    plt.xlabel('k')
+    plt.ylabel('P(k)')
     
     # you don't have to do something here
     plt.legend(legend)
