@@ -1,10 +1,16 @@
 from Node import Node
 from AbstractNetwork import AbstractNetwork 
 from RandomNetwork import RandomNetwork 
-#from AbstractNetwork import RandomNetwork 
 from DegreeDistribution import DegreeDistribution
+from Tools import *
 
-absnet = RandomNetwork(5, 10)
+# main properties
+numnodes = 5
+numedges = 4
 
+network = RandomNetwork(numnodes, numedges)
+distObject = DegreeDistribution(network)
+distNetwork = distObject.getNormalizedDistribution()
 
-
+bilderbuch = getPoissonDistributionHistogram(numnodes, numedges, 5)
+plotDistributionComparison([distNetwork, bilderbuch], ["Net", "Ref"], "Two ref")
