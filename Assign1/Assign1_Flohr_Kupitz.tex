@@ -80,12 +80,12 @@
 \lstinputlisting[label=ex2-2,caption={Example Listing of source code}] {Tools.py}
 \textbf{{"}Why does this happen and how do you need to ”fill” the shorter distributions?{"}}\\
 Our network distribution is designed to be as long as the maximal node degree. If the links are distributed perfectly, our distribution would always be $\lambda$ long. Unfortunately, this is very unlikely. In the worst case, all links could be attached to one node, increasing the number of distribution entities up to the number of links. Furthermore, every distribution differing from the perfect one causes variances in the length of the degree distribution.\\
-Additionally, the user defines the length of the entities calculated for the poisson distribution. Therefore, different length in the data can occure.\\
-Extensions of the random network derived data can be done by appending the required amount of zeros without disrupting the reults.\\
+Additionally, the user defines the length of the entities calculated for the poisson distribution. Therefore, different length in the data can occur.\\
+Extensions of the random network derived data can be done by appending the required amount of zeros without disrupting the results.\\
 The same can be done for the poisson distributed data, but it is not possible to keep the distribution if the distribution is only given for the first couple of entities.\\
 \textbf{Are the ranges of the discrete distributions we obtain in (c) deterministic in our case?}\\
-To answere this question, we first look at the definition of deterministic systems. {"}\textit{ In mathematics, computer science and physics, a deterministic system is a system in which no randomness is involved in the development of future states of the system. A deterministic model will thus always produce the same output from a given starting condition or initial state.}{"} (see Wikipedia artice of deterministic systems, \url{https://en.wikipedia.org/wiki/Deterministic_system}. With this knowledge, it is easy to show, that plot 1 is not deterministic, because further runs always produce new results. The same can be sad about the second plot, even if the changes are nearly invisible, the created random networks are allways different. Therefore, the plots ranges of the discrete distribution are not deterministic.\\
-But: The curves representing the poisson distribution are dterministic, because the distribution will not change if the input parameters remain the same.
+To answer this question, we first look at the definition of deterministic systems. {"}\textit{ In mathematics, computer science and physics, a deterministic system is a system in which no randomness is involved in the development of future states of the system. A deterministic model will thus always produce the same output from a given starting condition or initial state.}{"} (see Wikipedia article of deterministic systems, \url{https://en.wikipedia.org/wiki/Deterministic_system}). With this knowledge, it is easy to show, that plot 1 is not deterministic, because further runs always produce new results. The same can be said about the second plot, even if the changes are nearly invisible, the created random networks are always different. Therefore, the plots ranges of the discrete distribution are not deterministic.\\
+But: The curves representing the poisson distribution are deterministic, because the distribution will not change if the input parameters remain the same.
 \item Listing \ref{ex2-3} shows source code.
 \lstinputlisting[label=ex2-3,caption={Example Listing of source code}] {createAndPlotNetworks.py}
 This script resulted in figure \ref{ex2-p1} and \ref{ex2-p2}.
@@ -101,7 +101,7 @@ This script resulted in figure \ref{ex2-p1} and \ref{ex2-p2}.
   \label{ex2-p2}
 \end{figure}
 
-Both figure \ref{ex2-p1} and \ref{ex2-p2} show the degree distribution of different random networks. Thereby, lines listed in the legend starting with a {"}r{"} represent raw data, obtained by a randomly generated network. Their code is shown in listing \ref{ex1-3}. The distribution evaluation code can be found in listing\ref{ex2-1}. Curves with names starting on {"}p{"} are created with the code, provided in listing \ref{ex2-2} and represent the poisson distribution.\\
+Both figure \ref{ex2-p1} and \ref{ex2-p2} show the degree distribution of different random networks. Thereby, lines listed in the legend starting with a {"}r{"} represent raw data, obtained by a randomly generated network. Their code is shown in listing \ref{ex1-3}. The distribution evaluation code can be found in listing \ref{ex2-1}. Curves with names starting on {"}p{"} are created with the code, provided in listing \ref{ex2-2} and represent the poisson distribution.\\
 The network setup for plot \ref{ex2-p1} consists of random network with twice as many links as nodes. Since, every link attaches two nodes, we can expect every node to have an average degree of 4. Therefore, the expectation value $\lambda$ is determined to be 4. Due to this circumstance, the {"}p{"} lines have 100{\%} overlap. The degree distribution created by our random networks follows the same distribution. Further observable is that by increasing the number of nodes and edges, we converge with the poisson distribution.\\
 For plot \ref{ex2-p2}, we first concentrate on the estimated poisson distributions:\\
 \begin{table}
@@ -120,7 +120,8 @@ For plot \ref{ex2-p2}, we first concentrate on the estimated poisson distributio
 	20000 & 70000 & 7\\
 	\hline
 	\end{tabular}
-The $\lambda$ values are determined to be de twice the number of links divided by the number of nodes. As mentioned before, we concerge with the poisson distribution when increasing the number of nodes and links. Due to this, it is nearly impossible to distinguish between the last two (legend order) lines within the plot. The same holds true for all other pairs of lines.
+	\newline
+The $\lambda$ values are determined to be de twice the number of links divided by the number of nodes. As mentioned before, we converge with the poisson distribution when increasing the number of nodes and links. Due to this, it is nearly impossible to distinguish between the last two (legend order) lines within the plot. The same holds true for all other pairs of lines.
 \end{table}
 
 
