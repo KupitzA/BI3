@@ -59,9 +59,23 @@ def getScaleFreeDistributionHistogram(gamma, k):
     '''
     Generates a Power law distribution histogram with slope gamma up to degree k
     '''
+    histogram = list()
+    for i in range(0, k):
+        histogram[i] = math.pow(i, -gamma)
+    return histogram
     
 
 def simpleKSdist(histogram_a, histogram_b):
     '''
     Simple Kolmogorov-Smirnov distance implementation
     '''
+    dist = list()
+    F1 = list()
+    F2 = list()
+    F1[0] = histogram_a[0]
+    F2[0] = histogram_b[0]
+    for x in histogram_a:
+        F1[x] = F1[x-1] + histogram_a[x]
+        F2[x] = F2[x - 1] + histogram_b[x]
+        dist[x] = abs(F1[x] - F2[x])
+    return max(x for x in dist)

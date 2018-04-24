@@ -65,7 +65,13 @@
 \lstinputlisting[label=ex1-1,caption={Example Listing of source code}] {ScaleFreeNetwork.py}
 
 \item Listing \ref{ex1-2} shows source code.
-\lstinputlisting[label=ex1-2,caption={Example Listing of source code}] {Tools.py}
+\lstinputlisting[label=ex1-2,caption={Example Listing of source code}] {Assign2Task1.py}
+Both degree distributions, the one for 1000 and 10000 nodes, follow the same distribution. Only the network with fewer nodes has a higher probability for nodes with a lower degree which seems to result from the characteristic of scale-free networks to increase the degree of nodes with higher degrees. Figure \ref{fig-1} shows the plot.
+\begin{figure}
+\includegraphics[scale=1]{Figure_1.pdf}
+\caption{Comparison of two scale-free networks}
+\label{fig-1}
+\end{figure}
 
 \item Listing \ref{ex1-3} shows source code.
 \lstinputlisting[label=ex1-3,caption={Example Listing of source code}] {Tools.py}
@@ -73,9 +79,10 @@
 
 \exercise{Real-world network}
 \begin{enumerate}
-\item 
-\item 
-\item 
+\item File sharing services like Google Drive form clustered networks, which are clustered by the users which have access to a file. Every time a user adds a new file, a directed link connects a new file to an user.
+\item Social networks like Facebook, Twitter and so on may be represented as undirected scale-free networks because people with many friends are more likely to get new friends because they know many people. Moreover a connection between two users is not directed because both users have to accept a friend request.\\
+A social network can also be represented as a clustered network, whereby the clustered are made of different groups of friends.
+\item Broadcasting networks may form hierarchical or clustered networks. In the case of a hierarchical network, we assume that one broadcaster sends data to multiple other services which publish the data. The network could be clustered by the receiver, which receive data from the same broadcaster. A directed node connects each broadcaster to its receiver.
 \end{enumerate}
 
 \exercise{Real interaction networks}
