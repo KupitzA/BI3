@@ -21,7 +21,7 @@ class BioGRIDReader:
                     if first:
                         first = False
                     else:
-                        self.store(content)
+                        self.insertInteraction(content)
         else:
             print filename, "does not exist"
 
@@ -35,7 +35,7 @@ class BioGRIDReader:
         # return empty list if not splitable
         return []
 
-    def store(self, content):
+    def insertInteraction(self, content):
         '''
         Store content of a line in the dict structure
         '''
@@ -97,4 +97,11 @@ class BioGRIDReader:
                     counter.append([i, links])
         # return the required n organisms with the most interactions
         return counter[0:n]
-
+        
+    def writeInteractionFile(self, taxon_id, filename):
+        if taxon_id in self.storage.keys():
+            output = open(filename, "w")
+            for (a,b) in self.storage[taxon_id]:
+                output.write(a + "\t" + b + "\n")
+            output.close()
+            
