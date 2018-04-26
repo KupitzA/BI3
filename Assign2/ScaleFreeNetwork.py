@@ -38,22 +38,30 @@ class ScaleFreeNetwork(AbstractNetwork):
         :param linksPerIterations: number of links that should be added in this iteration
         """
         numOfLinks = 0
+        node1 = self.getNode(numOfNodes - 1)
         # add n links per iteration
         while numOfLinks < linksPerIteration:
             #choose second node randomly
-            nodeid2 = random.randint(0, numOfNodes-2)
-            node1 = self.getNode(numOfNodes-1)
-            node2 = self.getNode(nodeid2)
-            if not node1.hasLinkTo(node2):
+            nodeid2 = 0
+            r = random.random()
+            while nodeid2 < numOfNodes-1:
+                node2 = self.getNode(nodeid2)
                 #determine probability to choose node
                 if self.degreeSum != 0 and node2.degree() != 0:
-                    pi = float(node2.degree()) / self.degreeSum
+                    pi = float(node2.degree()) / (self.degreeSum - node1.degree())
                 else:
                     pi = float(1)
-                r = random.random()
-                #choose node with probability pi
-                if r < pi:
-                    numOfLinks += 1
-                    self.degreeSum += 2
-                    node1.addLinkTo(node2)
-                    node2.addLinkTo(node1)
+                #print(str(r) + " " + str(pi))
+                if not node1.hasLinkTo(node2):
+                    #choose node with probability pi
+                    if r < pi:
+                        numOfLinks += 1
+                        self.degreeSum += 2
+                        node1.addLinkTo(node2)
+                        node2.addLinkTo(node1)
+                        #print(str(node1) + str(node2))
+                        break
+                r -= pi
+                nodeid2 += 1
+
+#ScaleFreeNetwork(4,5)

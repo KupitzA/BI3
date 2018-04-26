@@ -66,7 +66,7 @@
 
 \item Listing \ref{ex1-2} shows source code.
 \lstinputlisting[label=ex1-2,caption={Example Listing of source code}] {Assign2Task1.py}
-Both degree distributions, the one for 1000 and 10000 nodes, follow the same distribution. Only the network with fewer nodes has a higher probability for nodes with a lower degree which seems to result from the characteristic of scale-free networks to increase the degree of nodes with higher degrees. Figure \ref{fig-1} shows the plot.
+Both degree distributions, the one for 1000 and 10000 nodes, follow the same distribution. Only the network with more nodes has some nodes with a higher degree than the other network which seems to result from the higher number of nodes. Figure \ref{fig-1} shows the plot.
 \begin{figure}
 \includegraphics[scale=1]{Figure_1.pdf}
 \caption{Comparison of two scale-free networks}
@@ -75,6 +75,12 @@ Both degree distributions, the one for 1000 and 10000 nodes, follow the same dis
 
 \item Listing \ref{ex1-3} shows source code.
 \lstinputlisting[label=ex1-3,caption={Example Listing of source code}] {Tools.py}
+Comparing the empirical and the theoretical distributions, one may see the first third of the graph fit well, whereas the rest of the empirical distribution is very differently distributed. We determined a gamma value of 1.8. The quality of our fit isn't very high. Maybe it could be improved by computing a average distance between each value. Figure \ref{fig-3} shows the plot.
+\begin{figure}
+\includegraphics[scale=1]{Figure_3.pdf}
+\caption{Comparison of empirical to theoretical network}
+\label{fig-3}
+\end{figure}
 \end{enumerate}
 
 \exercise{Real-world network}

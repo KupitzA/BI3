@@ -23,8 +23,8 @@ def comparison1():
     """
     Compares the degree distribution of a network with 1000 nodes to one with 10000 nodes
     """
-    net1 = ScaleFreeNetwork(1000, 2)
-    net2 = ScaleFreeNetwork(10000, 2)
+    net1 = ScaleFreeNetwork(1000, 1997)
+    net2 = ScaleFreeNetwork(10000, 19997)
     hist1 = computeDegreeDistribution(net1)
     hist2 = computeDegreeDistribution(net2)
     histograms = list()
@@ -41,8 +41,8 @@ def comparison2():
         Compares the degree distribution of a scale-free network to a random
         network with the same amount of nodes
     """
-    net1 = ScaleFreeNetwork(1000, 2)
-    net2 = RandomNetwork(1000, 2)
+    net1 = ScaleFreeNetwork(1000, 1997)
+    net2 = RandomNetwork(1000, 1997)
     hist1 = computeDegreeDistribution(net1)
     hist2 = computeDegreeDistribution(net2)
     histograms = list()
@@ -61,7 +61,7 @@ def determineGamma():
     :return: gamma that fits best to the degree distribution of a scale-free network
      with 10 000 nodes and two new links per iteration
     """
-    net1 = ScaleFreeNetwork(10000, 2)
+    net1 = ScaleFreeNetwork(10000, 19997)
     hist1 = computeDegreeDistribution(net1)
     mindist = float("inf") #minimal distance between theoretical and empirical network
     bestgamma = 0
@@ -82,9 +82,9 @@ def determineGamma():
     legend.append("empirical distribution")
     legend.append("optimal distribution")
     Tools.plotDistributionComparisonLogLog(histograms, legend, "Task 1 c)")
-    return bestgamma
+    print(bestgamma)
 
 
-determineGamma()
-#comparison2()
+#determineGamma()
+comparison2()
 
