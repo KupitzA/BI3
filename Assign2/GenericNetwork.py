@@ -1,6 +1,7 @@
 from os.path import exists
 from AbstractNetwork import AbstractNetwork
 from BioGRIDReader import BioGRIDReader
+from AbstractNetwork import AbstractNetwork
 from Node import Node
 
 class GenericNetwork(AbstractNetwork):
@@ -23,3 +24,21 @@ class GenericNetwork(AbstractNetwork):
                         n2.addLinkTo(n1)
         else:
             print filename, "does not exist"
+        
+    
+    def printDegreeHigherThan(self, n):
+        '''
+        Print proteins, with more than n interactions
+        '''
+        for i in self.nodes:
+            if(self.getNode(i).degree() > n):
+                print i, self.getNode(i).degree()
+                
+    def degreeDistribution(self):
+        vector = [0.0]*(self.size()+1)
+        for name in self.nodes:
+            node = self.getNode(name)
+            vector[node.degree()] += 1.0
+        for i in range(0,len(vector)):
+            vector[i] /= float(self.size())
+        return vector
