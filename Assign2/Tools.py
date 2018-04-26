@@ -71,12 +71,10 @@ def simpleKSdist(histogram_a, histogram_b):
     Simple Kolmogorov-Smirnov distance implementation
     '''
     dist = list()
-    F1 = list()
-    F2 = list()
-    F1[0] = histogram_a[0]
-    F2[0] = histogram_b[0]
-    for x in histogram_a:
+    F1 = {0: histogram_a[0]}
+    F2 = {0: histogram_b[0]}
+    for x in range(1, len(histogram_a)):
         F1[x] = F1[x-1] + histogram_a[x]
         F2[x] = F2[x - 1] + histogram_b[x]
-        dist[x] = abs(F1[x] - F2[x])
+        dist.append(abs(F1[x] - F2[x]))
     return max(x for x in dist)

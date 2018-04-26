@@ -20,6 +20,9 @@ def computeDegreeDistribution(AbstractNetwork):
 
 
 def comparison1():
+    """
+    Compares the degree distribution of a network with 1000 nodes to one with 10000 nodes
+    """
     net1 = ScaleFreeNetwork(1000, 2)
     net2 = ScaleFreeNetwork(10000, 2)
     hist1 = computeDegreeDistribution(net1)
@@ -34,6 +37,10 @@ def comparison1():
 
 
 def comparison2():
+    """
+        Compares the degree distribution of a scale-free network to a random
+        network with the same amount of nodes
+    """
     net1 = ScaleFreeNetwork(1000, 2)
     net2 = RandomNetwork(1000, 2)
     hist1 = computeDegreeDistribution(net1)
@@ -48,13 +55,23 @@ def comparison2():
 
 
 def determineGamma():
+    """
+    Fits the theoretical distribution of a scale-free network to the degree
+    distribution of a scale-free network using the Kolmogorov-Smirnov distance.
+    :return: gamma that fits best to the degree distribution of a scale-free network
+     with 10 000 nodes and two new links per iteration
+    """
     net1 = ScaleFreeNetwork(10000, 2)
     hist1 = computeDegreeDistribution(net1)
-    mindist = float("inf")
+    mindist = float("inf") #minimal distance between theoretical and empirical network
     bestgamma = 0
+    #try using gammas between 1 and zero in 0.1 steps
     for gamma in np.arange(1, 3, 0.1):
+        #generate thertical distribution with parameter gamma
         hist2 = Tools.getScaleFreeDistributionHistogram(gamma, 10000)
+        #compute distance using Kolgomorov-Smirnov distance
         dist = Tools.simpleKSdist(hist1, hist2)
+        #set minimal distance
         if dist < mindist:
             mindist = dist
             bestgamma = gamma
@@ -63,7 +80,7 @@ def determineGamma():
     histograms.append(hist2)
     legend = list()
     legend.append("empirical distribution")
-    histograms.append("optimal distribution")
+    legend.append("optimal distribution")
     Tools.plotDistributionComparisonLogLog(histograms, legend, "Task 1 c)")
     return bestgamma
 
