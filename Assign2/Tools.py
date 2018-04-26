@@ -60,8 +60,9 @@ def getScaleFreeDistributionHistogram(gamma, k):
     Generates a Power law distribution histogram with slope gamma up to degree k
     '''
     histogram = list()
-    for i in range(0, k):
-        histogram[i] = math.pow(i, -gamma)
+    histogram.append(0)
+    for i in range(1, k):
+        histogram.append(1.0 / math.pow(i, gamma))
     return histogram
     
 

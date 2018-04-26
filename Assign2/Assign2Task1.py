@@ -1,6 +1,7 @@
 from ScaleFreeNetwork import ScaleFreeNetwork
 from RandomNetwork import RandomNetwork
 import Tools
+import numpy as np
 
 
 def computeDegreeDistribution(AbstractNetwork):
@@ -51,7 +52,7 @@ def determineGamma():
     hist1 = computeDegreeDistribution(net1)
     mindist = float("inf")
     bestgamma = 0
-    for gamma in range(1, 3, 0.1):
+    for gamma in np.arange(1, 3, 0.1):
         hist2 = Tools.getScaleFreeDistributionHistogram(gamma, 10000)
         dist = Tools.simpleKSdist(hist1, hist2)
         if dist < mindist:
@@ -67,5 +68,6 @@ def determineGamma():
     return bestgamma
 
 
-comparison2()
+determineGamma()
+#comparison2()
 
