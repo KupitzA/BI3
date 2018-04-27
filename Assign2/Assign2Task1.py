@@ -83,8 +83,3 @@ def determineGamma():
     legend.append("optimal distribution")
     Tools.plotDistributionComparisonLogLog(histograms, legend, "Task 1 c)")
     print(bestgamma)
-
-
-#determineGamma()
-comparison2()
-
