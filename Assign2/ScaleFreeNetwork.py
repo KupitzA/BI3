@@ -51,7 +51,6 @@ class ScaleFreeNetwork(AbstractNetwork):
                     pi = float(node2.degree()) / (self.degreeSum - node1.degree())
                 else:
                     pi = float(1)
-                #print(str(r) + " " + str(pi))
                 if not node1.hasLinkTo(node2):
                     #choose node with probability pi
                     if r < pi:
@@ -59,9 +58,6 @@ class ScaleFreeNetwork(AbstractNetwork):
                         self.degreeSum += 2
                         node1.addLinkTo(node2)
                         node2.addLinkTo(node1)
-                        #print(str(node1) + str(node2))
                         break
                 r -= pi
                 nodeid2 += 1
-
-#ScaleFreeNetwork(4,5)
