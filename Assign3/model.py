@@ -59,7 +59,7 @@ class Model:
         #compute log-likelihood ratio
         for i in range(len(probFeature)):
             for j in range(len(probFeature[0])):
-                if probnotc[i][j] != 0 :
+                if probnotc[i][j] != 0:
                     probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
                     probFeature[i][j] = math.log(probFeature[i][j]) if probFeature[i][j] != 0 else -math.inf
                 else:
@@ -74,6 +74,7 @@ class Model:
         :param probFeature: matrix of log-likelihood ratio for each feature and state
         """
         bestK = []
+        print("enumeration of best features & log ratio & feature number & state variant\\")
         for ki in range(k):
             max = -1
             r = -1
@@ -86,8 +87,7 @@ class Model:
                         c = column
                         probFeature[row][column] = sys.float_info.min
             bestK.append([max, r, c])
-            print("#" + str(ki+1) + ": " + str(max) + "(log ratio), " + str(r) + "(feature number),"
-                  + str(c) + "(state variant)")
+            print(str(ki+1) + " & " + str(max) + " & " + str(r) + " & " + str(c) + "\\")
 
     def prediction(self, probFeature, featureMatrix):
         classification = []
@@ -102,7 +102,7 @@ class Model:
 
     def accuracy(self, classification):
         accuracy = 0
-        for i,c in enumerate(classification):
+        for i, c in enumerate(classification):
             if str(c) == self.classifier[i]:
                 accuracy += 1
         accuracy = accuracy / (len(classification)-1)

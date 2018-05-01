@@ -64,16 +64,66 @@
 \item Because the features are independent: \begin{equation}P(S) = \prod_{i} P(S_i) \end{equation}
 Following the Bayes theorem: \begin{equation} \frac{P(S|C) * P(C)} {P(S)} = P(C|S) \end{equation}
 Further \begin{equation} log( \frac{P(C|S)} {P(\bar{C}|S)} ) = log( \prod_{i} \frac{ \frac{P(S_i|C) * P(C)}{P(S_i)} }{ \frac{P(S_i|\bar{C}) * P(\bar{C})}{P(S_i)} } ) = \sum_{i} log( \frac{P(S_i|C) * P(C)}{P(S_i|\bar{C}) * P(\bar{C})} ) \end{equation}
+The actual classification is done by evaluating the sum over the log-likelihood ratios. If the sum is smaller zero, it means most of the log-likelihoods were smaller zero because the probability of $\bar{C}$ was greater than the one for C. Therefore, the state sequence evaluates to "no interaction". Vice versa, if the sum over the likelihoods was greater than zero, we classify 1, which means there is an interaction between the proteins.
 
-\item 
+\item The logarithm of the ratio enables to see directly if the probability is higher that the observed states belong to interacting or non-interacting proteins.
+Moreover the ratio of the likelihoods normalizes the probabilities because states occurring more often will have the same ratio than less frequent ones.
 
 \item Listing \ref{ex1-1} shows source code.
 \lstinputlisting[label=ex1-1,caption={Example Listing of source code}] {model.py}
+P(C) = 0.5125628140703518\\
+P($\bar{C}$) = 0.48743718592964824\\
+Table \ref{tab1} shows best 10 features.
+The 10 features in table \ref{tab1} seem to be the most promising features to recognize protein interactions correctly because their log-likelihood is very high. There is no specific region of features which seems to be very helpful. The best ten features are rather widely spread. Further, no state variant seems to indicate an interaction.
+\begin{table}[b]
+\label{tab1}
+\begin{tabular}{llll}
+enumeration of best features & log ratio & feature number & state variant\\
+\hline
+1 & 1.4718165345580525 & 11 & 1\\
+2 & 1.252762968495368 & 25 & 2\\
+3 & 1.067840630001356 & 33 & 2\\
+4 & 0.6931471805599453 & 40  & 2\\
+5 & 0.6505875661411493 & 81 & 0\\
+6 & 0.5679840376059394 & 87 & 0\\
+7 & 0.46262352194811307 & 91 & 3\\
+8 & 0.42121346507630364 & 95 & 3\\
+9 & 0.38946476676172315 & 69 & 1\\
+10 & 0.38946476676172315 & 74 & 0\\
+\end{tabular}
+\caption{best 10 features}
+\end{table}
 
-\item
+\item Listing \ref{ex1-1} shows source code.\\
+Unfortunately the classification tends to classify the majority of the protein interactions to "no interaction". Therefore we have an accuracy of below 50\%, which corresponds to the protein pairs correctly classified to "no interaction".\\
+For "test1.tsv" the classification is: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\\
+Whereby each position in the list corresponds to the protein pair in the testfile at the same position. The exact value of the accuracy is 0.40404040404040403.
 
-\item 
+\item P(C) = 0.7839195979899497\\
+P($\bar{C}$) = 0.2160804020100503\\
+Table \ref{tab2} shows best 10 features.
+\begin{table}[b]
+\label{tab2}
+\begin{tabular}{llll}
+enumeration of best features & log ratio & feature number & state variant\\
+\hline
+1 & 2.9231615807191553 & 11 & 1\\
+2 & 2.5649493574615363 & 83 & 0\\
+3 & 2.1747517214841605 & 58 & 3\\
+4 & 2.0794415416798357 & 61 & 2\\
+5 & 2.0149030205422647 & 37 & 1\\
+6 & 2.0053335695261136 & 74 & 0\\
+7 & 1.9924301646902058 & 90 & 1\\
+8 & 1.9661128563728325 & 91 & 1\\
+9 & 1.9042374526547448 & 63 & 0\\
+10 & 1.860752340715006 & 70 & 1\\
+\end{tabular}
+\caption{best 10 features}
+\end{table}
 \end{enumerate}
+For "test2.tsv" the classification is: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\\
+The accuracy is 0.7878787878787878.\\
+For our implementation, the classification is not inferior. Though, the classification might be worse for the second test set because in the second trainingset, interacting proteins occur more often than non-interacting ones which may lead to proteins rather been interpreted as interacting.
 
 \exercise{Network communities}
 \begin{enumerate}
