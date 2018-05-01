@@ -1,4 +1,7 @@
 import csv
+import math
+import sys
+
 
 class Model:
     """Builds a model. This basically means to determine all necessary priors and likelihoods
@@ -39,19 +42,28 @@ class Model:
         :return: matrix of log-likelihood ratio for each feature and state
         """
         probc = float(sumc) / (len(self.classifier) - 1)
+        countnotc = len(self.classifier)-1-sumc
         probFeature = [0]*100
+        probnotc = [0]*100
         for i in range(100):
             probFeature[i] = [0]*4
+            probnotc[i] = [0]*4
+        #probnotc = probFeature.copy()
         #count successfull classifications for each feature and state
         for rownumber, rowvalue in enumerate(self.featureMatrix):
             for feature, state in enumerate(rowvalue):
                 if self.classifier[rownumber] == "1":
                     probFeature[feature][int(state)] += 1
+                else:
+                    probnotc[feature][int(state)] += 1
         #compute log-likelihood ratio
         for i in range(len(probFeature)):
             for j in range(len(probFeature[0])):
-                probFeature[i][j] = probFeature[i][j] / float(sumc)
-                probFeature[i][j] = probFeature[i][j] * probc / ((1-probFeature[i][j]) * (1-probc))
+                if probnotc[i][j] != 0 :
+                    probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
+                    probFeature[i][j] = math.log(probFeature[i][j]) if probFeature[i][j] != 0 else -math.inf
+                else:
+                    probFeature[i][j] = math.inf if probFeature[i][j] != 0 else -math.inf
         return probFeature
 
     def reportBestK(self, k, probFeature):
@@ -72,13 +84,37 @@ class Model:
                         max = j
                         r = row
                         c = column
-                        probFeature[row][column] = -1
+                        probFeature[row][column] = sys.float_info.min
             bestK.append([max, r, c])
-            print("#" + str(ki+1) + ": " + str(max) + "(log ratio), " + str(r) + "(feature number), " + str(c) + "(state variant)")
+            print("#" + str(ki+1) + ": " + str(max) + "(log ratio), " + str(r) + "(feature number),"
+                  + str(c) + "(state variant)")
+
+    def prediction(self, probFeature, featureMatrix):
+        classification = []
+        for rowvalue in featureMatrix:
+            probC = 0
+            for feature, state in enumerate(rowvalue):
+                probC += probFeature[feature][int(state)]
+            c = 1 if probC > 0 else 0
+            classification.append(c)
+        print(classification)
+        return classification
+
+    def accuracy(self, classification):
+        accuracy = 0
+        for i,c in enumerate(classification):
+            if str(c) == self.classifier[i]:
+                accuracy += 1
+        accuracy = accuracy / (len(classification)-1)
+        print(accuracy)
 
 
 m = Model()
-m.readTSV("training1.tsv")
+m.readTSV("training2.tsv")
 probc = m.classify()
 probFeature = m.conditionalProb(probc)
 m.reportBestK(10, probFeature)
+mtest = Model()
+mtest.readTSV("test2.tsv")
+classification = m.prediction(probFeature, mtest.featureMatrix)
+m.accuracy(classification)
