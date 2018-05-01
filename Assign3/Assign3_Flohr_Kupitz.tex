@@ -61,12 +61,14 @@
 
 \exercise{Naive Bayes classifier}
 \begin{enumerate}
-\item 
+\item Because the features are independent: \begin{equation}P(S) = \prod_{i} P(S_i) \end{equation}
+Following the Bayes theorem: \begin{equation} \frac{P(S|C) * P(C)} {P(S)} = P(C|S) \end{equation}
+Further \begin{equation} log( \frac{P(C|S)} {P(\bar{C}|S)} ) = log( \prod_{i} \frac{ \frac{P(S_i|C) * P(C)}{P(S_i)} }{ \frac{P(S_i|\bar{C}) * P(\bar{C})}{P(S_i)} } ) = \sum_{i} log( \frac{P(S_i|C) * P(C)}{P(S_i|\bar{C}) * P(\bar{C})} ) \end{equation}
 
 \item 
 
-\item %Listing \ref{ex1-1} shows source code.
-%\lstinputlisting[label=ex1-3,caption={Example Listing of source code}] {}
+\item Listing \ref{ex1-1} shows source code.
+\lstinputlisting[label=ex1-1,caption={Example Listing of source code}] {model.py}
 
 \item
 
