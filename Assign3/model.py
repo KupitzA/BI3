@@ -59,12 +59,13 @@ class Model:
         #compute log-likelihood ratio
         for i in range(len(probFeature)):
             for j in range(len(probFeature[0])):
-                if probnotc[i][j] != 0:
-                    probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
-                    probFeature[i][j] = math.log(probFeature[i][j]) if probFeature[i][j] != 0 else -math.inf
-                else:
-                    probFeature[i][j] = math.inf if probFeature[i][j] != 0 else -math.inf
-        return probFeature
+                if probnotc[i][j] != 0 and probFeature[i][j] != 0:
+                    #probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
+                    probFeature[i][j] = probFeature[i][j] / float(sumc) / (probnotc[i][j] / float(countnotc))
+                    probFeature[i][j] = math.log(probFeature[i][j])# if probFeature[i][j] != 0 else 0
+                #else:
+                    #probFeature[i][j] = math.inf if probFeature[i][j] != 0 else 0
+        return probFeature, probc
 
     def reportBestK(self, k, probFeature):
         """
@@ -76,12 +77,12 @@ class Model:
         bestK = []
         print("enumeration of best features & log ratio & feature number & state variant\\")
         for ki in range(k):
-            max = -1
+            max = 0
             r = -1
             c = -1
             for row, i in enumerate(probFeature):
                 for column, j in enumerate(i):
-                    if j > max:
+                    if math.fabs(j) > math.fabs(max):
                         max = j
                         r = row
                         c = column
@@ -89,12 +90,14 @@ class Model:
             bestK.append([max, r, c])
             print(str(ki+1) + " & " + str(max) + " & " + str(r) + " & " + str(c) + "\\")
 
-    def prediction(self, probFeature, featureMatrix):
+    def prediction(self, probFeature, featureMatrix, probc):
         classification = []
         for rowvalue in featureMatrix:
             probC = 0
             for feature, state in enumerate(rowvalue):
                 probC += probFeature[feature][int(state)]
+            probC += math.log(probc/(1-probc))
+            print(probC)
             c = 1 if probC > 0 else 0
             classification.append(c)
         print(classification)
@@ -110,11 +113,11 @@ class Model:
 
 
 m = Model()
-m.readTSV("training2.tsv")
+m.readTSV("training1.tsv")
 probc = m.classify()
-probFeature = m.conditionalProb(probc)
+probFeature, probc = m.conditionalProb(probc)
 m.reportBestK(10, probFeature)
 mtest = Model()
-mtest.readTSV("test2.tsv")
-classification = m.prediction(probFeature, mtest.featureMatrix)
+mtest.readTSV("test1.tsv")
+classification = m.prediction(probFeature, mtest.featureMatrix, probc)
 m.accuracy(classification)
