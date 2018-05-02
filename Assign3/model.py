@@ -20,7 +20,7 @@ class Model:
             for row in reader:
                 self.classifier.append(row[0])
                 features = []
-                for i in range(1,99):
+                for i in range(1,101):
                     features.append(row[i])
                 self.featureMatrix.append(features)
 
@@ -59,6 +59,7 @@ class Model:
         #compute log-likelihood ratio
         for i in range(len(probFeature)):
             for j in range(len(probFeature[0])):
+                #print(probFeature[i][j])
                 if probnotc[i][j] != 0 and probFeature[i][j] != 0:
                     #probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
                     probFeature[i][j] = probFeature[i][j] / float(sumc) / (probnotc[i][j] / float(countnotc))
@@ -96,7 +97,7 @@ class Model:
             probC = 0
             for feature, state in enumerate(rowvalue):
                 probC += probFeature[feature][int(state)]
-            probC += math.log(probc/(1-probc))
+            probC += math.log(float(probc)/(1-probc))
             print(probC)
             c = 1 if probC > 0 else 0
             classification.append(c)
@@ -113,11 +114,11 @@ class Model:
 
 
 m = Model()
-m.readTSV("training1.tsv")
+m.readTSV("training2.tsv")
 probc = m.classify()
 probFeature, probc = m.conditionalProb(probc)
 m.reportBestK(10, probFeature)
 mtest = Model()
-mtest.readTSV("test1.tsv")
+mtest.readTSV("test2.tsv")
 classification = m.prediction(probFeature, mtest.featureMatrix, probc)
 m.accuracy(classification)
