@@ -20,7 +20,7 @@ class Model:
             for row in reader:
                 self.classifier.append(row[0])
                 features = []
-                for i in range(1,101):
+                for i in range(1, 101):
                     features.append(row[i])
                 self.featureMatrix.append(features)
 
@@ -42,7 +42,7 @@ class Model:
         :return: matrix of log-likelihood ratio for each feature and state
         """
         probc = float(sumc) / (len(self.classifier) - 1)
-        countnotc = len(self.classifier)-1-sumc
+        countnotc = len(self.classifier)-sumc
         probFeature = [0]*100
         probnotc = [0]*100
         for i in range(100):
@@ -59,13 +59,9 @@ class Model:
         #compute log-likelihood ratio
         for i in range(len(probFeature)):
             for j in range(len(probFeature[0])):
-                #print(probFeature[i][j])
                 if probnotc[i][j] != 0 and probFeature[i][j] != 0:
-                    #probFeature[i][j] = probFeature[i][j] / float(sumc) * probc / (probnotc[i][j] / float(countnotc) * (1-probc))
                     probFeature[i][j] = probFeature[i][j] / float(sumc) / (probnotc[i][j] / float(countnotc))
-                    probFeature[i][j] = math.log(probFeature[i][j])# if probFeature[i][j] != 0 else 0
-                #else:
-                    #probFeature[i][j] = math.inf if probFeature[i][j] != 0 else 0
+                    probFeature[i][j] = math.log(probFeature[i][j])
         return probFeature, probc
 
     def reportBestK(self, k, probFeature):
@@ -92,6 +88,14 @@ class Model:
             print(str(ki+1) + " & " + str(max) + " & " + str(r) + " & " + str(c) + "\\")
 
     def prediction(self, probFeature, featureMatrix, probc):
+        """
+        Predicts the ability to interact for the protein pairs
+        :param probFeature: matrix of log-likelihood ratio for each feature and state that was
+        learned from trainings test set
+        :param featureMatrix: Matrix with values of each feature from test file
+        :param probc: probability to classify a protein pair to 1
+        :return: list with classified interactions for each protein pair
+        """
         classification = []
         for rowvalue in featureMatrix:
             probC = 0
@@ -105,7 +109,12 @@ class Model:
         return classification
 
     def accuracy(self, classification):
-        accuracy = 0
+        """
+        Computes the accuracy of the classifier
+        :param classification: list with classified interactions for each protein pair
+        :return: accuracy of classification
+        """
+        accuracy = 0.0
         for i, c in enumerate(classification):
             if str(c) == self.classifier[i]:
                 accuracy += 1
@@ -114,11 +123,11 @@ class Model:
 
 
 m = Model()
-m.readTSV("training2.tsv")
+m.readTSV("training1.tsv")
 probc = m.classify()
 probFeature, probc = m.conditionalProb(probc)
 m.reportBestK(10, probFeature)
 mtest = Model()
-mtest.readTSV("test2.tsv")
+mtest.readTSV("test1.tsv")
 classification = m.prediction(probFeature, mtest.featureMatrix, probc)
 m.accuracy(classification)
