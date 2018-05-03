@@ -9,6 +9,7 @@
 \usepackage{a4wide} % wide pages
 \usepackage{fancyhdr} % nice headers
 \usepackage{tikz} %graphs
+\usetikzlibrary{arrows}
 \lstset{basicstyle=\footnotesize,language=Python,numbers=left, numberstyle=\tiny, stepnumber=5,firstnumber=0, numbersep=5pt} % set up listings
 \pagestyle{fancy}             % header
 \setlength{\parindent}{0pt}   % no indentation
@@ -148,12 +149,91 @@ The classification might be worse for the second test set because in the second 
 \end{center}
 \end{figure}
 
+\item
+\begin{enumerate}
 \item Listing \ref{ex2-2} shows source code.
 %\lstinputlisting[label=ex2-2,caption={Example Listing of source code}] {.py}
-\begin{enumerate}
+
 \item
-\item
+\begin{tikzpicture}[sloped]
+\node (a) at (-14,0) {Samwell};
+\node (b) at (-13,0) {Jon};
+\node (c) at (-12,0) {Jeor};
+\node (d) at (-11,0) {Jaime};
+\node (e) at (-10,0) {Tyrion};
+\node (f) at (-9,0) {Cersei};
+\node (g) at (-5,0) {Eddard};
+\node (h) at (-4,0) {Sansa};
+\node (i) at (-3,0) {Ayra};
+\node (j) at (-8,0) {Robert};
+\node (k) at (-7,0) {Joeffrey};
+\node (l) at (-2,0) {Baelish};
+\node (m) at (-1,0) {Catelyn};
+\node (n) at (-6,0) {Mountain};
+\node (o) at (0,0) {Hound};
+\node (p) at (-16,0) {Varys};
+\node (q) at (-15,0) {Shae};
+\node (ab) at (-13.5,1) {};
+\node (bc) at (-13,1) {};
+\node (de) at (-10.5,1) {};
+\node (ef) at (-10,1) {};
+\node (gh) at (-4.5,1) {};
+\node (hi) at (-4,1) {};
+\node (fj) at (-9,1) {};
+\node (jk) at (-8,1) {};
+\node (il) at (-3,1) {};
+\node (lm) at (-2,1) {};
+\node (kn) at (-7,1) {};
+\node (mo) at (-1,1) {};
+\node (dn) at (-8.5,2) {};
+\node (go) at (-2.5,2) {};
+\node (dnunten) at (-8.5,1) {};
+\node (gounten) at (-2.5,1) {};
+\node (ac) at (-13,3) {};
+\node (do) at (-5.5,3) {};
+\node (dounten) at (-5.5,2) {};
+\node (Q) at (-15,4) {};
+\node (ao) at (-8.75,4) {};
+\node (aounten) at (-8.75,3) {};
+\node (P) at (-16,5) {};
+\node (aq) at (-12.5,5) {};
+\node (aqunten) at (-12,4) {};
+\draw  (a) |- (ab.center);
+\draw  (b) |- (ab.center);
+\draw  (c) |- (bc.center);
+\draw  (d) |- (de.center);
+\draw  (e) |- (de.center);
+\draw  (f) |- (ef.center);
+\draw  (g) |- (gh.center);
+\draw  (h) |- (gh.center);
+\draw  (i) |- (hi.center);
+\draw  (j) |- (fj.center);
+\draw  (k) |- (jk.center);
+\draw  (l) |- (il.center);
+\draw  (m) |- (lm.center);
+\draw  (n) |- (kn.center);
+\draw  (o) |- (mo.center);
+\draw  (dn.center) |- (go.center);
+\draw  (dnunten.center) |- (dn.center);
+\draw  (gounten.center) |- (go.center);
+\draw  (ac.center) |- (do.center);
+\draw  (b) |- (ac.center);
+\draw  (dounten.center) |- (do.center);
+\draw  (Q) |- (ao.center);
+\draw  (q) |- (Q);
+\draw  (ao.center) |- (aounten.center);
+\draw  (P) |- (aq.center);
+\draw  (p) |- (P);
+\draw  (aq.center) |- (aqunten.center);
+\end{tikzpicture}
 \end{enumerate}
+
+\item Figure \ref{fig-1} shows .\\
+\begin{figure}
+\includegraphics[scale=1]{task2c).jpg}
+\caption{Visualization of two disjoint communities}
+\label{fig-1}
+\end{figure}
 \end{enumerate}
 
 \end{document}
