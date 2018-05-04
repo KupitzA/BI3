@@ -1,9 +1,9 @@
-Remove edge with clustering coefficient 0.0 :	 Sansa - Tyrio
 Remove edge with clustering coefficient 0.0 :	 Baelish - Varys
 Remove edge with clustering coefficient 0.0 :	 Tyrion - Shae
 Remove edge with clustering coefficient 0.5 :	 Hound - Joffrey
 Remove edge with clustering coefficient 0.5 :	 Jon - Eddard
 Remove edge with clustering coefficient 0.5 :	 Eddard - Robert
+Remove edge with clustering coefficient 0.5 :	 Sansa - Tyrion
 Remove edge with clustering coefficient 1.0 :	 Hound - Mountain
 Remove edge with clustering coefficient 0.0 :	 Hound - Arya
 Remove edge with clustering coefficient 0.0 :	 Mountain - Cersei
