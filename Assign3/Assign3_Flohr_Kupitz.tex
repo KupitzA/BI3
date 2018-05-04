@@ -70,7 +70,7 @@ The actual classification is done by evaluating the sum over the log-likelihood 
 
 \item The logarithm of the ratio enables to see directly if the probability is higher that the observed states belong to interacting or non-interacting proteins.
 Moreover the ratio of the likelihoods normalizes the probabilities because states occurring more often will have the same ratio than less frequent ones.\\
-This classification may perform bad on real-world data if a feature classifies all interactions to the same class because we cannot handle probabilities beeing zero. Moreover classification is bad if the dataset is small because the classification may be biased to one class.
+This classification may perform bad on real-world data if a feature classifies all interactions to the same class because we cannot handle probabilities being zero. Moreover classification is bad if the dataset is small because the classification may be biased to one class.
 
 \item Listing \ref{ex1-1} shows source code.
 \lstinputlisting[label=ex1-1,caption={Example Listing of source code}] {model.py}
@@ -100,7 +100,7 @@ enumeration of best features & log ratio & feature number & state variant\\
 \item Listing \ref{ex1-1} shows source code.\\
 The classification is equally distributed between both classes. But the accuracy is rather low.\\
 For "test1.tsv" the classification is: [1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1]\\
-Whereby each position in the list corresponds to the protein pair in the testfile at the same position. The exact value of the accuracy is 0.5757575757575758.
+Whereby each position in the list corresponds to the protein pair in the test file at the same position. The exact value of the accuracy is 0.5757575757575758.
 
 \item P(C) = 0.7839195979899497\\
 P($\bar{C}$) = 0.2160804020100503\\
@@ -126,11 +126,11 @@ enumeration of best features & log ratio & feature number & state variant\\
 \end{enumerate}
 For "test2.tsv" the classification is: [0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0]\\
 The accuracy is 0.37373737373737376.\\
-The classification might be worse for the second test set because in the second trainingset, interacting proteins occur more often than non-interacting ones which may lead to proteins rather been interpreted as interacting.
+The classification might be worse for the second test set because in the second trainings set, interacting proteins occur more often than non-interacting ones which may lead to proteins rather been interpreted as interacting.
 
 \exercise{Network communities}
 \begin{enumerate}
-\item The maximal finite value that the edge-clustering coefficiant can take is 2 because it is maximal if the numerator is maximal and the denominator is minimal. The denominator cannot get smaller than 0 because every pair of nodes will have at least one edge between them. Because division by zero is undefined, we take the next value 1, which means that the nodes both have at least one more edge than the one to each other. If both nodes have at least two edges, there is maximal one triangle between them if they are connected to the same node. Therefore, the numerator is 2. If there were more trinagles between the nodes, the denominator would also increase and the ratio is smaller. Thus, 2 is the maximal value the coefficient can take. Figure \ref{fig2_1} shows an example of a nettwork with maximal clustering coefficient between all nodes.\\
+\item The maximal finite value that the edge-clustering coefficient can take is 2 because it is maximal if the numerator is maximal and the denominator is minimal. The denominator cannot get smaller than 0 because every pair of nodes will have at least one edge between them. Because division by zero is undefined, we take the next value 1, which means that the nodes both have at least one more edge than the one to each other. If both nodes have at least two edges, there is maximal one triangle between them if they are connected to the same node. Therefore, the numerator is 2. If there were more triangles between the nodes, the denominator would also increase and the ratio is smaller. Thus, 2 is the maximal value the coefficient can take. Figure \ref{fig2_1} shows an example of a network with maximal clustering coefficient between all nodes.\\
 \newline
 \begin{figure}
 \begin{center}
@@ -154,50 +154,53 @@ The classification might be worse for the second test set because in the second 
 \item Listing \ref{ex2-2} shows source code.
 %\lstinputlisting[label=ex2-2,caption={Example Listing of source code}] {.py}
 
-\item
+\item Figure \ref{fig2_2} shows the dendrogram of the network.
+\begin{figure}
+\begin{center}
 \begin{tikzpicture}[sloped]
-\node (a) at (-14,0) {Samwell};
-\node (b) at (-13,0) {Jon};
-\node (c) at (-12,0) {Jeor};
-\node (d) at (-11,0) {Jaime};
-\node (e) at (-10,0) {Tyrion};
-\node (f) at (-9,0) {Cersei};
-\node (g) at (-5,0) {Eddard};
-\node (h) at (-4,0) {Sansa};
-\node (i) at (-3,0) {Ayra};
-\node (j) at (-8,0) {Robert};
-\node (k) at (-7,0) {Joeffrey};
-\node (l) at (-2,0) {Baelish};
-\node (m) at (-1,0) {Catelyn};
-\node (n) at (-6,0) {Mountain};
-\node (o) at (0,0) {Hound};
-\node (p) at (-16,0) {Varys};
-\node (q) at (-15,0) {Shae};
-\node (ab) at (-13.5,1) {};
-\node (bc) at (-13,1) {};
-\node (de) at (-10.5,1) {};
-\node (ef) at (-10,1) {};
-\node (gh) at (-4.5,1) {};
-\node (hi) at (-4,1) {};
-\node (fj) at (-9,1) {};
-\node (jk) at (-8,1) {};
-\node (il) at (-3,1) {};
-\node (lm) at (-2,1) {};
-\node (kn) at (-7,1) {};
-\node (mo) at (-1,1) {};
-\node (dn) at (-8.5,2) {};
-\node (go) at (-2.5,2) {};
-\node (dnunten) at (-8.5,1) {};
-\node (gounten) at (-2.5,1) {};
-\node (ac) at (-13,3) {};
-\node (do) at (-5.5,3) {};
-\node (dounten) at (-5.5,2) {};
-\node (Q) at (-15,4) {};
-\node (ao) at (-8.75,4) {};
-\node (aounten) at (-8.75,3) {};
-\node (P) at (-16,5) {};
-\node (aq) at (-12.5,5) {};
-\node (aqunten) at (-12,4) {};
+\label{fig2_2}
+\node (a) at (-15,0) {Samwell};
+\node (b) at (-14,0) {Jon};
+\node (c) at (-13,0) {Jeor};
+\node (d) at (-12,0) {Jaime};
+\node (e) at (-11,0) {Tyrion};
+\node (f) at (-10,0) {Cersei};
+\node (g) at (-6,0) {Eddard};
+\node (h) at (-5,0) {Sansa};
+\node (i) at (-4,0) {Ayra};
+\node (j) at (-9,0) {Robert};
+\node (k) at (-8,0) {Joeffrey};
+\node (l) at (-3,0) {Baelish};
+\node (m) at (-2,0) {Catelyn};
+\node (n) at (-7,0) {Mountain};
+\node (o) at (-1,0) {Hound};
+\node (p) at (-17,0) {Varys};
+\node (q) at (-16,0) {Shae};
+\node (ab) at (-14.5,1) {};
+\node (bc) at (-14,1) {};
+\node (de) at (-11.5,1) {};
+\node (ef) at (-11,1) {};
+\node (gh) at (-5.5,1) {};
+\node (hi) at (-5,1) {};
+\node (fj) at (-10,1) {};
+\node (jk) at (-9,1) {};
+\node (il) at (-4,1) {};
+\node (lm) at (-3,1) {};
+\node (kn) at (-8,1) {};
+\node (mo) at (-2,1) {};
+\node (dn) at (-9.5,2) {};
+\node (go) at (-3.5,2) {};
+\node (dnunten) at (-9.5,1) {};
+\node (gounten) at (-3.5,1) {};
+\node (ac) at (-14,3) {};
+\node (do) at (-6.5,3) {};
+\node (dounten) at (-6.5,2) {};
+\node (Q) at (-16,4) {};
+\node (ao) at (-9.75,4) {};
+\node (aounten) at (-9.75,3) {};
+\node (P) at (-17,5) {};
+\node (aq) at (-13.5,5) {};
+\node (aqunten) at (-13,4) {};
 \draw  (a) |- (ab.center);
 \draw  (b) |- (ab.center);
 \draw  (c) |- (bc.center);
@@ -226,9 +229,15 @@ The classification might be worse for the second test set because in the second 
 \draw  (p) |- (P);
 \draw  (aq.center) |- (aqunten.center);
 \end{tikzpicture}
+\caption{dendrogram of communities}
+\end{center}
+\end{figure}
 \end{enumerate}
 
-\item Figure \ref{fig-1} shows .\\
+\item Figure \ref{fig-1} shows the visually determined two disjoint communities. For both communities the strong criterion applies. For all nodes besides Ayra, Eddard and Sansa from community one and the Hound, Robert and Tyrion from community two applies that they are only connected to nodes within the same community. Whereas the six outliers have one edge to the outside but at least two links to the inside, which means for every member of the subgraph V holds, it has more links to the inside of the community ($k^{in}$) than to the outside ($k^{out}$):\\
+\begin{equation}
+k^{in}_i (V) > k^{out}_i (V) \forall i \in V
+\end{equation}
 \begin{figure}
 \includegraphics[scale=1]{task2c).jpg}
 \caption{Visualization of two disjoint communities}
