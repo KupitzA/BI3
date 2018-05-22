@@ -1,6 +1,8 @@
 from AbstractNetwork import AbstractNetwork
 import random
 
+from CliqueNetwork import CliqueNetwork
+
 
 class RandomizedNetwork(AbstractNetwork):
     def __createNetwork__(self, network, m):
@@ -17,5 +19,5 @@ class RandomizedNetwork(AbstractNetwork):
             node1.removeLinkTo(node2)
             node3.removeLinkTo(node4)
 
-cn = RandomizedNetwork(CliqueNetwork("rat_network.tsv", "dummy"), 10)
-print(cn.size())
+
+cn = RandomizedNetwork(CliqueNetwork("test.tsv", "dummy"), 10)

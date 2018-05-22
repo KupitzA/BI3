@@ -50,7 +50,9 @@ class CliqueNetwork(AbstractNetwork):
             return candidates
 
     def evolve(self, t):
-        cliques = dict()
+        cliques = list()
+        for c in range(3):
+            cliques.append(t * [0])
         for i in range(t):
             clique = cn.findCliques()
             r = random.random()
@@ -65,17 +67,20 @@ class CliqueNetwork(AbstractNetwork):
                         node2.addLinkTo(node1)
                         break
             else:
+                while len(node1.nodelist)==0:
+                    node1id = random.choice(list(self.nodes))
+                    node1 = self.nodes[node1id]
                 node2 = random.choice(node1.nodelist)
                 node1.removeLinkTo(node2)
-            cliques = self.plot(clique, i, t, cliques)
-        for i in cliques.values():
-            plt.plot(range(len(i)), cliques[i], marker='x')
+            cliques = self.plot(clique, i, cliques)
+        for index, item in enumerate(cliques):
+            plt.plot(range(len(item)), item, marker='x')
             plt.xlabel('t')
             plt.ylabel('amount of cliques')
-            plt.legend("")
-            plt.title("")
+            plt.title('Evolving Networks')
+            plt.legend('345')
             plt.tight_layout()
-            plt.show()
+        plt.show()
                     
     def printClique(self, clique):
         for line in clique:
@@ -84,21 +89,23 @@ class CliqueNetwork(AbstractNetwork):
                 s += str(c)
             print(s)
 
-    def plot(self, clique, t, tmax, cliques):
-        for c in clique:
-            if len(c) - 1 in cliques:
-                cliques[len(c)-1][t] = cliques[len(c)-1][t] + 1
-            else:
-                cliques[len(c) - 1] = tmax*[0]
-        return cliques
+    def plot(self, clique, t, cliques):
+        if t == 999:
+            for c in clique:
+                cliques[len(c)-3][t] = cliques[len(c)-3][t] + 1
+            return cliques
+        else:
+            for c in clique:
+                cliques[len(c)-3][t] = cliques[len(c)-3][t] + 1
+            return cliques
 
 
 
 cn = CliqueNetwork("rat_network.tsv", "dummy")
 #cn = CliqueNetwork("test.txt", "dummy")
-print(cn.size())
+#print(cn.size())
 clique = cn.findCliques()
-cn.printClique(clique)
-cn.evolve(100)
+#cn.printClique(clique)
+#cn.evolve(1000)
 clique = cn.findCliques()
-cn.printClique(clique)
+#cn.printClique(clique)
