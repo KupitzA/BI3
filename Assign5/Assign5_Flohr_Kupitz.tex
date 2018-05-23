@@ -70,7 +70,7 @@
 
 \item Listing \ref{ex1-1} shows source code.
 
-\item The number of cliques stays approximately the same independent of the time step because approximately the same amount of edges are added which are removed as shown in figure \ref{fig-1}. The amount of cliques of size 3 increases rather than the one of larger cliques because a less edges added may result in a small clique.
+\item The number of cliques stays approximately the same independent of the time step because approximately the same amount of edges are added which are removed as shown in figure \ref{fig-1}, table \ref{tab1} and table \ref{tab2}. The amount of cliques of size 3 increases rather than the one of larger cliques because a less edges added may result in a small clique.
 \begin{figure}
 \includegraphics[scale=1]{plotTask1_100.png}
 \caption{Number of cliques of size 3, 4 and 5 at the beginning and after each time step as a function of time with t = 100}
@@ -90,7 +90,7 @@ clique size & number of cliques before evolution & number of cliques after evolu
 \end{table}
 
 \begin{table}[!h]
-\label{tab1}
+\label{tab2}
 \begin{tabular}{llll}
 clique size & number of cliques before evolution & number of cliques after evolution\\
 \hline
@@ -101,9 +101,25 @@ clique size & number of cliques before evolution & number of cliques after evolu
 \caption{Number of cliques of size 3, 4 and 5 at the beginning and after letting it evolve for 1000 time steps}
 \end{table}
 
-\item
+\item The goal of randomising networks this way is to create random permutations of a network. In this way the behaviour of similar networks may be studied and the networks quality may be rated.\\
+Listing \ref{ex1-2} shows source code.
+\lstinputlisting[label=ex1-2,caption={Listing of source code}] {RandomizedNetwork.py}
 
-\item
+\item Assuming a p-value of 0.05, none of the clique sizes were significantly enriched, see table \ref{tab3}.\\
+Listing \ref{ex1-3} shows source code.
+\lstinputlisting[label=ex1-3,caption={Listing of source code}] {MotifNetwork.py}
+\begin{table}[!h]
+\label{tab3}
+\begin{tabular}{ll}
+clique size i & $p_i$\\
+\hline
+3 & 0.38\\
+4 & 0.27\\
+5 & 1.0\\
+\end{tabular}
+\caption{Number of randomised networks in which the
+number of cliques is at least as high as in the original network divided by the number of randomised networks for each clique size}
+\end{table}
 \end{enumerate}
 
 \exercise{Annotations in Protein Protein Interaction Networks}
