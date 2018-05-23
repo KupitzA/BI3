@@ -63,14 +63,43 @@
 
 \exercise{Cliques and Network Evolution}
 \begin{enumerate}
-\item Listing \ref{ex2-1} shows source code.
-%\lstinputlisting[label=ex2-1,caption={Listing of source code}] {layout.py}
+\item Listing \ref{ex1-1} shows source code.
+\lstinputlisting[label=ex1-1,caption={Listing of source code}] {CliqueNetwork.py}
 
-\item 
+\item Listing \ref{ex1-1} shows source code.
 
-\item 
+\item Listing \ref{ex1-1} shows source code.
 
-\item
+\item The number of cliques stays approximately the same independent of the time step because approximately the same amount of edges are added which are removed as shown in figure \ref{fig-1}. The amount of cliques of size 3 increases rather than the one of larger cliques because a less edges added may result in a small clique.
+\begin{figure}
+\includegraphics[scale=1]{plotTask1_100.png}
+\caption{Number of cliques of size 3, 4 and 5 at the beginning and after each time step as a function of time with t = 100}
+\label{fig-1}
+\end{figure}
+
+\begin{table}[!h]
+\label{tab1}
+\begin{tabular}{llll}
+clique size & number of cliques before evolution & number of cliques after evolution\\
+\hline
+3 & 294 & 300\\
+4 & 33 & 33\\
+5 & 3 & 3\\
+\end{tabular}
+\caption{Number of cliques of size 3, 4 and 5 at the beginning and after letting it evolve for 100 time steps}
+\end{table}
+
+\begin{table}[!h]
+\label{tab1}
+\begin{tabular}{llll}
+clique size & number of cliques before evolution & number of cliques after evolution\\
+\hline
+3 & 294 & 327\\
+4 & 33 & 27\\
+5 & 3 & 3\\
+\end{tabular}
+\caption{Number of cliques of size 3, 4 and 5 at the beginning and after letting it evolve for 1000 time steps}
+\end{table}
 
 \item
 
