@@ -12,6 +12,7 @@ class CliqueNetwork(AbstractNetwork):
         """
         Create a network from a file
         """
+        counter = 0
         if exists(filename):
             # "with" closes the file again after reading 
             with open(filename) as openfile:
@@ -19,6 +20,9 @@ class CliqueNetwork(AbstractNetwork):
                     # get entries of a line as list
                     content = line[0:(len(line)-1)].split("\t")
                     # and store them
+                    counter = counter + 1
+                    if counter%10000 == 0:
+						print "Reading line of "+ filename + " " + str(counter)
                     if len(content) == 2:
                         n1 = self.getNode(content[0])
                         n2 = self.getNode(content[1])
@@ -129,9 +133,10 @@ class CliqueNetwork(AbstractNetwork):
         for c in clique:
             cliques[len(c)-3][t] = cliques[len(c)-3][t] + 1
         return cliques
-
-
-cn = CliqueNetwork("rat_network.tsv", "dummy")
-clique = cn.findCliques()
-cn.evolve(1000)
-clique = cn.findCliques()
+    
+    def numLinks(self):
+        summ = 0
+        for n in self.nodes:
+            summ = summ + len(self.getNode(n).nodelist)
+        return summ / 2
+			

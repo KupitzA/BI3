@@ -1,0 +1,603 @@
+Start program
+1. Create Network
+2. Initialize Mapping
+3. Assign Alternative Names
+1.	-------------------------------------
+Name:		MFGE8
+Accession Number:	P79385
+Alternative Names:
+	1	MFGE8
+GO Term Annotations:
+	1	GO:0050766
+	2	GO:0006910
+	3	GO:0006911
+	4	GO:0007338
+	5	GO:0043277
+	6	GO:0007155
+	7	GO:0001525
+2.	-------------------------------------
+Name:		ALDH5A1
+Accession Number:	A0A287AR05
+Alternative Names:
+	1	ALDH5A1
+GO Term Annotations:
+	1	GO:0009791
+	2	GO:0006650
+	3	GO:0006083
+	4	GO:0051289
+	5	GO:0022904
+	6	GO:0006541
+	7	GO:0009450
+	8	GO:0006105
+	9	GO:0006536
+	10	GO:0006681
+	11	GO:0006749
+	12	GO:0006678
+	13	GO:0006006
+	14	GO:0046459
+	15	GO:0007417
+3.	-------------------------------------
+Name:		ACRBP
+Accession Number:	Q29016
+Alternative Names:
+	1	ACRBP
+GO Term Annotations:
+	1	GO:0048240
+4.	-------------------------------------
+Name:		SYNRG
+Accession Number:	
+Alternative Names:
+	1	SYNRG
+GO Term Annotations:
+5.	-------------------------------------
+Name:		UBB
+Accession Number:	
+Alternative Names:
+	1	UBB
+GO Term Annotations:
+6.	-------------------------------------
+Name:		GAB1
+Accession Number:	K7GMT0
+Alternative Names:
+	1	GAB1
+GO Term Annotations:
+	1	GO:0031532
+	2	GO:0038084
+	3	GO:0001525
+	4	GO:0045766
+	5	GO:0090668
+7.	-------------------------------------
+Name:		ABAT
+Accession Number:	P80147
+Alternative Names:
+	1	GABAT
+	2	ABAT
+GO Term Annotations:
+	1	GO:0042135
+	2	GO:0009450
+	3	GO:0048148
+8.	-------------------------------------
+Name:		HSP70
+Accession Number:	
+Alternative Names:
+	1	HSP70
+GO Term Annotations:
+9.	-------------------------------------
+Name:		LOC100155139
+Accession Number:	
+Alternative Names:
+	1	LOC100155139
+GO Term Annotations:
+10.	-------------------------------------
+Name:		DCTN1
+Accession Number:	F1SNT8
+Alternative Names:
+	1	DCTN1
+GO Term Annotations:
+	1	GO:0000132
+	2	GO:0034454
+	3	GO:0090063
+	4	GO:0051081
+	5	GO:0010457
+	6	GO:0010970
+	7	GO:0042147
+	8	GO:1905515
+	9	GO:0032402
+	10	GO:0060236
+11.	-------------------------------------
+Name:		LOC100037957
+Accession Number:	
+Alternative Names:
+	1	LOC100037957
+GO Term Annotations:
+12.	-------------------------------------
+Name:		NCOR1
+Accession Number:	F1SDC8
+Alternative Names:
+	1	NCOR1
+GO Term Annotations:
+	1	GO:0072362
+	2	GO:0000122
+	3	GO:1903799
+	4	GO:0072368
+	5	GO:0046329
+	6	GO:0051225
+13.	-------------------------------------
+Name:		LOC100154987
+Accession Number:	
+Alternative Names:
+	1	LOC100154987
+GO Term Annotations:
+14.	-------------------------------------
+Name:		MYH2
+Accession Number:	Q9TV63
+Alternative Names:
+	1	MYH2
+GO Term Annotations:
+	1	GO:0007018
+15.	-------------------------------------
+Name:		NR6A1
+Accession Number:	F1SKS7
+Alternative Names:
+	1	NR6A1
+	2	GCNF
+GO Term Annotations:
+	1	GO:0000122
+	2	GO:0030154
+	3	GO:0006366
+	4	GO:0006355
+	5	GO:0007283
+	6	GO:0045944
+	7	GO:0006351
+	8	GO:0043401
+	9	GO:0030518
+	10	GO:0007275
+	11	GO:0007276
+16.	-------------------------------------
+Name:		CALM1
+Accession Number:	
+Alternative Names:
+	1	CALM1
+GO Term Annotations:
+17.	-------------------------------------
+Name:		LOC100525409
+Accession Number:	A0A287BFM1
+Alternative Names:
+	1	LOC100525409
+GO Term Annotations:
+	1	GO:0006508
+18.	-------------------------------------
+Name:		TUBB2A
+Accession Number:	
+Alternative Names:
+	1	TUBB2A
+GO Term Annotations:
+19.	-------------------------------------
+Name:		CCDC91
+Accession Number:	I3L6D3
+Alternative Names:
+	1	CCDC91
+GO Term Annotations:
+	1	GO:0090160
+20.	-------------------------------------
+Name:		MYO6
+Accession Number:	Q29122
+Alternative Names:
+	1	MYO6
+GO Term Annotations:
+	1	GO:0006897
+	2	GO:0051046
+	3	GO:0030330
+	4	GO:0007605
+	5	GO:0006886
+	6	GO:0007018
+	7	GO:0030048
+	8	GO:0045944
+21.	-------------------------------------
+Name:		AWN
+Accession Number:	A0A287B4W5
+Alternative Names:
+	1	AWN
+GO Term Annotations:
+	1	GO:0007338
+22.	-------------------------------------
+Name:		PSMA1
+Accession Number:	F2Z5L7
+Alternative Names:
+	1	PSMA1
+GO Term Annotations:
+	1	GO:0006511
+23.	-------------------------------------
+Name:		PSMA7
+Accession Number:	A0A287AT18
+Alternative Names:
+	1	PSMA7
+GO Term Annotations:
+	1	GO:0006511
+24.	-------------------------------------
+Name:		PIK3R1
+Accession Number:	I3LLB7
+Alternative Names:
+	1	PIK3R1
+GO Term Annotations:
+	1	GO:0008286
+	2	GO:0050821
+	3	GO:0014065
+	4	GO:0048009
+	5	GO:0034644
+	6	GO:0032760
+	7	GO:0008625
+	8	GO:0051492
+	9	GO:0030335
+	10	GO:0043066
+	11	GO:0046854
+	12	GO:0006468
+	13	GO:0033120
+	14	GO:0030183
+	15	GO:1903076
+	16	GO:0006606
+	17	GO:0046626
+	18	GO:0001678
+	19	GO:0042307
+	20	GO:0043551
+	21	GO:0008630
+	22	GO:0060396
+	23	GO:0001953
+	24	GO:0045944
+	25	GO:0045671
+	26	GO:1900103
+	27	GO:0034976
+25.	-------------------------------------
+Name:		PSMA5
+Accession Number:	F2Z5K2
+Alternative Names:
+	1	PSMA5
+GO Term Annotations:
+	1	GO:0043161
+26.	-------------------------------------
+Name:		PSMA8
+Accession Number:	F1SBA5
+Alternative Names:
+	1	PSMA8
+GO Term Annotations:
+	1	GO:0006511
+27.	-------------------------------------
+Name:		RAP80
+Accession Number:	I3LPV8
+Alternative Names:
+	1	RAP80
+	2	UIMC1
+GO Term Annotations:
+	1	GO:0072425
+	2	GO:0010212
+	3	GO:0006302
+	4	GO:0006355
+	5	GO:0045892
+	6	GO:0006351
+	7	GO:0045739
+	8	GO:0070537
+28.	-------------------------------------
+Name:		NOS3
+Accession Number:	Q28969
+Alternative Names:
+	1	NOS3
+	2	NOS
+GO Term Annotations:
+	1	GO:0014740
+	2	GO:0031284
+	3	GO:0030324
+	4	GO:0043267
+	5	GO:0001525
+	6	GO:0006809
+	7	GO:0043542
+	8	GO:0003057
+	9	GO:0051346
+	10	GO:0001542
+	11	GO:0001974
+	12	GO:0006527
+	13	GO:0045766
+	14	GO:0055114
+	15	GO:0045776
+	16	GO:0002028
+	17	GO:0008285
+	18	GO:0014806
+	19	GO:0050880
+	20	GO:0043536
+	21	GO:0001701
+	22	GO:0007263
+	23	GO:0003100
+	24	GO:0031663
+	25	GO:0097755
+	26	GO:0019430
+	27	GO:0051926
+	28	GO:0034405
+29.	-------------------------------------
+Name:		PSMA4
+Accession Number:	A0A287BIV4
+Alternative Names:
+	1	PSMA4
+GO Term Annotations:
+	1	GO:0006511
+30.	-------------------------------------
+Name:		HEATR5B
+Accession Number:	
+Alternative Names:
+	1	HEATR5B
+GO Term Annotations:
+31.	-------------------------------------
+Name:		RABEP1
+Accession Number:	A0A287B9H8
+Alternative Names:
+	1	RABEP1
+GO Term Annotations:
+	1	GO:0010469
+	2	GO:0006897
+	3	GO:0043547
+32.	-------------------------------------
+Name:		PTGIS
+Accession Number:	F1SBE5
+Alternative Names:
+	1	PTGIS
+GO Term Annotations:
+	1	GO:0050728
+	2	GO:0071354
+	3	GO:0007566
+	4	GO:0097755
+	5	GO:0097190
+	6	GO:0045766
+	7	GO:0035360
+	8	GO:0001516
+	9	GO:1900119
+	10	GO:0071456
+	11	GO:0046697
+	12	GO:0045019
+	13	GO:0042981
+	14	GO:0071347
+	15	GO:0055114
+	16	GO:0032088
+33.	-------------------------------------
+Name:		GGA1
+Accession Number:	A0A287AJM0
+Alternative Names:
+	1	GGA1
+GO Term Annotations:
+	1	GO:0045732
+	2	GO:0006886
+	3	GO:0016192
+	4	GO:1901998
+34.	-------------------------------------
+Name:		GGA2
+Accession Number:	F1SAB3
+Alternative Names:
+	1	GGA2
+GO Term Annotations:
+	1	GO:0006886
+	2	GO:0016192
+35.	-------------------------------------
+Name:		PSMB6
+Accession Number:	F1RFV5
+Alternative Names:
+	1	PSMB6
+GO Term Annotations:
+	1	GO:0051603
+36.	-------------------------------------
+Name:		UBR7
+Accession Number:	
+Alternative Names:
+	1	UBR7
+GO Term Annotations:
+37.	-------------------------------------
+Name:		PSP-I
+Accession Number:	
+Alternative Names:
+	1	PSP-I
+GO Term Annotations:
+38.	-------------------------------------
+Name:		SUCLG2
+Accession Number:	P53590
+Alternative Names:
+	1	SUCLG2
+GO Term Annotations:
+	1	GO:0006104
+	2	GO:0006099
+39.	-------------------------------------
+Name:		ADAM5
+Accession Number:	
+Alternative Names:
+	1	ADAM5
+GO Term Annotations:
+40.	-------------------------------------
+Name:		AP1G1
+Accession Number:	F1S3C7
+Alternative Names:
+	1	AP1G1
+GO Term Annotations:
+	1	GO:0006886
+	2	GO:0090160
+	3	GO:0043323
+	4	GO:0035646
+41.	-------------------------------------
+Name:		PTPN11
+Accession Number:	A0A287AQB6
+Alternative Names:
+	1	PTPN11
+GO Term Annotations:
+	1	GO:0000187
+	2	GO:0060125
+	3	GO:0030220
+	4	GO:0060020
+	5	GO:0042593
+	6	GO:0048008
+	7	GO:0060325
+	8	GO:0046676
+	9	GO:0035264
+	10	GO:0035265
+	11	GO:0035335
+	12	GO:0036302
+	13	GO:0048013
+	14	GO:0009755
+	15	GO:0042445
+	16	GO:0033277
+	17	GO:0033629
+	18	GO:0048806
+	19	GO:0021697
+	20	GO:0045931
+	21	GO:0048609
+	22	GO:0006641
+	23	GO:0032528
+	24	GO:0007173
+	25	GO:0007409
+	26	GO:0046887
+	27	GO:0048011
+	28	GO:0048873
+	29	GO:0043254
+	30	GO:0035855
+	31	GO:0051463
+	32	GO:0048839
+	33	GO:0071364
+	34	GO:0000077
+	35	GO:0040014
+	36	GO:0061582
+	37	GO:0007229
+	38	GO:0046825
+	39	GO:2001275
+	40	GO:0070374
+42.	-------------------------------------
+Name:		PSMA3
+Accession Number:	F1SSL6
+Alternative Names:
+	1	PSMA3
+GO Term Annotations:
+	1	GO:0052548
+	2	GO:0006511
+43.	-------------------------------------
+Name:		SPMI
+Accession Number:	Q28920
+Alternative Names:
+	1	AQN-3
+	2	SPMI
+GO Term Annotations:
+	1	GO:0007338
+44.	-------------------------------------
+Name:		SUCLG1
+Accession Number:	O19069
+Alternative Names:
+	1	SUCLG1
+GO Term Annotations:
+	1	GO:0006099
+45.	-------------------------------------
+Name:		PRKACA
+Accession Number:	P36887
+Alternative Names:
+	1	PRKACA
+GO Term Annotations:
+	1	GO:0018107
+	2	GO:0006468
+	3	GO:0018105
+	4	GO:0071374
+	5	GO:0001707
+	6	GO:0061136
+	7	GO:0034605
+	8	GO:1901621
+	9	GO:0050804
+	10	GO:0071158
+	11	GO:0046827
+	12	GO:0045667
+	13	GO:0070613
+	14	GO:1904145
+	15	GO:2000810
+	16	GO:0071333
+	17	GO:0001843
+	18	GO:0048240
+	19	GO:0046777
+	20	GO:0006397
+46.	-------------------------------------
+Name:		MAPT
+Accession Number:	A0A286ZXV0
+Alternative Names:
+	1	MAPT
+GO Term Annotations:
+	1	GO:0033673
+	2	GO:0050808
+	3	GO:0031116
+	4	GO:0010469
+	5	GO:0007613
+	6	GO:0050848
+	7	GO:0010629
+	8	GO:0000226
+	9	GO:1990000
+	10	GO:1903829
+	11	GO:1904428
+	12	GO:0010506
+	13	GO:0048312
+	14	GO:0032930
+	15	GO:1902474
+	16	GO:0010917
+	17	GO:1901216
+	18	GO:2001020
+	19	GO:0090258
+	20	GO:1903748
+	21	GO:1900034
+	22	GO:0045773
+47.	-------------------------------------
+Name:		BSP1
+Accession Number:	
+Alternative Names:
+	1	BSP1
+GO Term Annotations:
+48.	-------------------------------------
+Name:		HSP90AA1
+Accession Number:	O02705
+Alternative Names:
+	1	HSP90AA1
+	2	HSPCA
+	3	HSP90A
+GO Term Annotations:
+	1	GO:0006457
+	2	GO:0050790
+	3	GO:0045429
+	4	GO:0046677
+	5	GO:0009409
+	6	GO:0009408
+49.	-------------------------------------
+Name:		AQN-1
+Accession Number:	Q4R0H3
+Alternative Names:
+	1	AQN-1
+GO Term Annotations:
+	1	GO:0007338
+50.	-------------------------------------
+Name:		ZP4
+Accession Number:	Q07287
+Alternative Names:
+	1	ZPB
+	2	ZP4
+	3	ZP3A
+GO Term Annotations:
+	1	GO:0002922
+	2	GO:2000344
+	3	GO:2000360
+	4	GO:0060478
+	5	GO:0042102
+51.	-------------------------------------
+Name:		TBXAS1
+Accession Number:	P47787
+Alternative Names:
+	1	CYP5
+	2	TBXAS1
+	3	CYP5A1
+GO Term Annotations:
+	1	GO:0001516
+	2	GO:0055114
+--------------------- Overview ---------------------
+Total number of proteins:			51
+Total number of protein interactions:		50
+Number of proteines without GO annotation:	13 (25.4901960784%)
+Smallest number of GO annotations per protein	0
+Average number of GO annotations per protein	5.29411764706
+Highest number of GO annotations per protein	40
+Smallest number of proteins per GO annotations	1
+Average number of proteins per GO annotations	1.13445378151
+Highest number of proteins per GO annotations	5
+r most annotated GO terms:	['GO:0006886', 'GO:0007338', 'GO:0006511']
+r fewest annotated GO terms:	['GO:0000077', 'GO:0000132', 'GO:0000187']
