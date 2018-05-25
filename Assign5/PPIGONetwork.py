@@ -3,6 +3,10 @@ from os.path import exists
 import sys
 
 class Protein:
+	"""
+	Protein class: Storage for protein specific informations
+	obtained by the network, uniprot and go-term-file
+	"""
 	def __init__(self, name):
 		# storage for protein name (from PPI)
 		self.name = name
@@ -51,61 +55,110 @@ class Protein:
 
 
 class Mapping:
+	"""
+	Mapping class: Stores protein objects and provides
+	further functionality
+	"""
 	def __init__(self):
-		# key:name  = Protein
+		"""
+		key: protein name = Protein
+		"""
 		self.mapping = dict()
 	
 	def existsAccession(self, accession):
-		if accession in self.mapping.keys():
-			return True
-		else:
-			return False
+		"""
+		Returns true if the mapping contains a protein with
+		the given accession number
+		"""
+		for name in self.mapping.keys():
+			if self.mapping[name].getAccessionNumber() == accession:
+				return True
+		return False
+		
 	def existsName(self, name):
+		"""
+		Returns true if the mapping contains a protein with
+		the given name
+		"""
 		if name in self.mapping.keys():
 			return True
 		else:
 			return False
 	
 	def getMainName(self, variant):
+		"""
+		Return the name of a protein for a given alternative name
+		"""
+		if self.existsName(variant):
+			return variant
 		for i in self.mapping.keys():
 			if variant in self.mapping[i].getAlternatives():
 				return i
 		return variant
 	
 	def addProtein(self, name):
+		"""
+		Expand mapping by one protein with the given name
+		"""
 		self.mapping[name] = Protein(name)
 		
 	def addAlternatives(self, name, alternatives):
+		"""
+		Add an alternative name to the protein with the given name
+		Return without action if the protein name does not exist
+		"""
 		if self.existsName(name):
 			self.mapping[name].addAlternatives(alternatives)
 	
 	def addGOTerm(self, name, goterm):
+		"""
+		Add a go term to the protein with the given name.
+		Return without action if the protein name does not exist
+		"""
 		if self.existsName(name):
 			self.mapping[name].addGOTerm(goterm)
 			
+	def addAccession(self, name, accession):
+		"""
+		Add an accession number to the protein with the given name
+		Return without action if the protein name does not exist
+		"""
+		if self.existsName(name):
+			self.mapping[name].setAccessionNumber(accession)
+	
 	def show(self):
+		"""
+		Write proteines into the terminal
+		"""
 		counter = 1
 		for i in self.mapping.keys():
 			print str(counter) + ".\t-------------------------------------"
 			self.mapping[i].show()
 			counter = counter + 1
 	
-	def addAccession(self, name, accession):
-		if self.existsName(name):
-			self.mapping[name].setAccessionNumber(accession)
-	
-	
 	def getKeys(self):
+		"""
+		Return mapping keys (in the end, these are the protein names)
+		"""
 		return self.mapping.keys
+	
+	# Exercise specific functions
 		
 	def sumNoAnnotation(self):
+		"""
+		Count proteins without go annotations
+		"""
 		summ = 0
 		for i in self.mapping.keys():
 			if len(self.mapping[i].getGOTerms()) == 0:
-				summ = summ + 1
+				summ += 1
 		return summ
 	
 	def rawDistribution(self):
+		"""
+		Compute the minimal, average and maximal number
+		of go annotations per gene
+		"""
 		values = [sys.maxint,0,0]
 		for i in self.mapping.keys():
 			annotations = len(self.mapping[i].getGOTerms())
@@ -118,55 +171,63 @@ class Mapping:
 		return values
 	
 	def rawReverseDistribution(self):
-		summ = dict()
+		"""
+		Compute the minimal, average and maximal number
+		of proteins per go annotations
+		"""
+		# initialize dict (key: GO term, value: occurrence)
+		# store it as field of the class to allow later access
+		self.revsum = dict()
 		for i in self.mapping.keys():
 			terms = self.mapping[i].getGOTerms()
 			for j in terms:
-				summ[j] = 0
+				self.revsum[j] = 0
+		# count occurrences
 		for i in self.mapping.keys():
 			terms = self.mapping[i].getGOTerms()
 			for j in terms:
-				summ[j] = summ[j] + 1
+				self.revsum[j] += + 1
 		
+		# evaluate minimum, average and maximum
 		values = [sys.maxint,0,0]
-		for i in summ.keys():
-			temp = summ[i]
+		for i in self.revsum.keys():
+			temp = self.revsum[i]
 			if temp < values[0]:
 				values[0] = temp
 			if temp > values[2]:
 				values[2] = temp
 			values[1] = values[1] + temp
-		
-		values[1] = float(values[1])/float(len(summ.keys()))
+		values[1] = float(values[1])/float(len(self.mapping.keys()))
 		return values
 	
 	def extendedNumber(self, length, number):
+		"""
+		Append zeros in front of a string, allows a lexicographical
+		sorting of different sized numbers
+		"""
 		while len(number) < length:
 			number = "0" + number
 		return number
 	
 	def nMostFewestAnnotations(self, n):
-		summ = dict()
-		for i in self.mapping.keys():
-			terms = self.mapping[i].getGOTerms()
-			for j in terms:
-				summ[j] = 0
-		for i in self.mapping.keys():
-			terms = self.mapping[i].getGOTerms()
-			for j in terms:
-				summ[j] = summ[j] + 1
-		
+		"""
+		Returns the n most and n fewest annotated GO terms
+		"""
+		# create a dict, where the keys are a combination of occurrences
+		# and GO terms (as string - allows easy sorting)
 		sorter = dict()
-		for i in summ.keys():
-			key = self.extendedNumber(10, str(summ[i])) + i
-			sorter[key] = [i, summ[i]]
+		for i in self.revsum.keys():
+			key = self.extendedNumber(10, str(self.revsum[i])) + i
+			sorter[key] = (i, self.revsum[i])
 		
+		# sort the keys of the sorter dict in lexicographically increaing
+		# order, at the same time the most occurring terms come to the end
 		helping = []
-		#fewest = []
 		for i in sorter.keys():
-			helping.append(i) ####[0]
+			helping.append(i)
 		helping.sort()
 		
+		# extract the n most and fewest common GO annotations
 		high = []
 		low = []
 		for i in helping[0:n]:
@@ -178,34 +239,37 @@ class Mapping:
 	
 class PPIGONetwork:
 	"""
-	Comment
+	Performs part a b c of exercise 5.2
 	"""
 	def __init__(self, ppi_file, uniprot_file, go_file):
 		# read in ppi network
 		print "1. Create Network"
 		self.ppi = CliqueNetwork(ppi_file, "")
-		
 		# create mapping of protein informations
 		print "2. Initialize Mapping"
 		self.mapping = Mapping()
 		self.initializeMapping()
 		print "3. Assign Alternative Names"
 		self.updateMappingNames(uniprot_file)
+		print "4. Assign Go terms"
 		self.assignGOTerms(go_file)
+		print "Initialization completed"
 
 	def initializeMapping(self):
+		"""
+		Transfere network proteins into mapping
+		"""
 		for n in self.ppi.nodes:
 			self.mapping.addProtein(n)
 	
 	def updateMappingNames(self, uniprot_file):
+		"""
+		Read in uniprot file to extend mapping with alternative
+		protein names
+		"""
 		if exists(uniprot_file):
-			# "with" closes the file again after reading 
-			counter = 0
 			with open(uniprot_file) as openfile:
 				for line in openfile:
-					counter = counter + 1
-					if counter% 10000 == 0:
-						print "Reading line " + str(counter)
 					# get entries of a line as list
 					content = line[0:(len(line)-1)].split("\t")
 					if len(content) >= 4:
@@ -216,14 +280,14 @@ class PPIGONetwork:
 			print(filename, "does not exist")
 		
 	def assignGOTerms(self, go_file):
+		"""
+		Extend mapping with GO terms of GO term file
+		Add accession number to proteins
+		"""
 		if exists(go_file):
 			# "with" closes the file again after reading 
-			counter = 0
 			with open(go_file) as openfile:
 				for line in openfile:
-					counter = counter + 1
-					if counter%10000 == 0:
-						print "Reading line " + str(counter)
 					# get entries of a line as list
 					content = line[0:(len(line)-1)].split("\t")
 					#content = [x for x in content if x != ""]
@@ -237,6 +301,9 @@ class PPIGONetwork:
 		return self.ppi.size()
 
 	def overview(self):
+		"""
+		Output information required for subtasks a b c
+		"""
 		print "--------------------- Overview ---------------------"
 		print "Total number of proteins:\t\t\t" + str(self.ppi.size())
 		print "Total number of protein interactions:\t\t" + str(self.ppi.numLinks())

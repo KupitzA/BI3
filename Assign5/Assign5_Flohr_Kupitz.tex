@@ -64,7 +64,7 @@
 \exercise{Cliques and Network Evolution}
 \begin{enumerate}
 \item Listing \ref{ex1-1} shows source code.
-\lstinputlisting[label=ex1-1,caption={Listing of source code}] {CliqueNetwork.py}
+\lstinputlisting[tabsize=4, label=ex1-1,caption={Listing of source code}] {CliqueNetwork.py}
 
 \item Listing \ref{ex1-1} shows source code.
 
@@ -103,11 +103,11 @@ clique size & number of cliques before evolution & number of cliques after evolu
 
 \item The goal of randomising networks this way is to create random permutations of a network. In this way the behaviour of similar networks may be studied and the networks quality may be rated.\\
 Listing \ref{ex1-2} shows source code.
-\lstinputlisting[label=ex1-2,caption={Listing of source code}] {RandomizedNetwork.py}
+\lstinputlisting[tabsize=4, label=ex1-2,caption={Listing of source code}] {RandomizedNetwork.py}
 
 \item Assuming a p-value of 0.05, none of the clique sizes were significantly enriched, see table \ref{tab3}.\\
 Listing \ref{ex1-3} shows source code.
-\lstinputlisting[label=ex1-3,caption={Listing of source code}] {MotifNetwork.py}
+\lstinputlisting[tabsize=4, label=ex1-3,caption={Listing of source code}] {MotifNetwork.py}
 \begin{table}[!h]
 \label{tab3}
 \begin{tabular}{ll}
@@ -124,14 +124,63 @@ number of cliques is at least as high as in the original network divided by the 
 
 \exercise{Annotations in Protein Protein Interaction Networks}
 \begin{enumerate}
-\item 
+\item Implemented in \texttt{PPIGONetwork.py}, see Listing \ref{ex2}
 
-\item 
+\item Required information provided in table \ref{table:ex2a}
+\begin{table}[!h]
+\caption{Reults for exercise 5.2 b}
+\label{table:ex2a}
+\begin{tabular}{l l}
+Task & Result\\
+\hline
+total number of proteins and interactions in the network & 17087\\
+total number of unique annotations in the network & 275472\\
+total number and percentage of proteins without any annotation & 2334 (13.6595\%)\\
+smallest number of annotations per protein & 0\\
+average number of annotations per protein & 7.013\\
+highest number of annotations per protein & 184\\
+smallest number of associated proteins per annotatio & 1\\
+average number of associated proteins per annotatio & 7.013\\
+highest number of associated proteins per annotatio & 1519\\
+\end{tabular}
+\end{table}
 
-\item 
+\item In table \ref{table:ex2c}, we see the five most and least annotated GO terms. We see that the most annotated GO terms are all involved in crucial biological processes for cell viability. In this way, we have important transcription factors, which regulate the different expression levels. Additonally, we have one GO term encoding signal transduction, which is also important for cell communication, appoptosis, etc. Further, the GO terms are relatively unspecific, so they do not describe just one specific process, - this fewer information content leads to a high number of annotations . Therefore it is no surprise that these GO terms are high annotated.\\
+In contrast, the least annotated GO terms describe various, precise biological processes. Therefore they can only be assigned to a specific subset of human proteins. Therefore we see only a few annotations of them. So they are less common but have a higher information content than the most annotated proteins GO terms.
+\begin{table}[!h]
+\caption{Reults for exercise 5.2 b}
+\label{table:ex2c}
+\begin{tabular}{c c c}
+Task & Result\\
+\hline
+\multicolumn{3}{c}{Most Common}\\
+\hline
+GO term & Occurrence & Biological Process\\
+\hline
+GO:0006351 & 1519 &  transcription, DNA-templated\\
+GO:0045944 & 1001 &  positive regulation of transcription by RNA polymerase II\\
+GO:0007165 & 980 & signal transduction\\
+GO:0006357 & 937 &  regulation of transcription by RNA polymerase II\\
+GO:0006355 & 740 & regulation of transcription, DNA-templated\\
+\hline
+\multicolumn{3}{c}{Least Common}\\
+\hline
+GO term & Occurrence & Biological Process\\
+\hline
+GO:0000003 & 1 &  reproduction \\
+GO:0000011 & 1 & vacuole inheritance\\
+GO:0000032 & 1 & cell wall mannoprotein biosynthetic process\\
+GO:0000053 & 1 &  argininosuccinate metabolic process \\
+GO:0000097 & 1 & sulfur amino acid biosynthetic process\\
 
-\item 
+\end{tabular}
+\end{table}
+\item Not implemented
 
-\item 
+\item Not implemented
+
+\item Listing \ref{ex2} shows source code.
+\lstinputlisting[tabsize=4, label=ex2,caption={Listing of source code}] {PPIGONetwork.py}
+
 \end{enumerate}
 \end{document}
