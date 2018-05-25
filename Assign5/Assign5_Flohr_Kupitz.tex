@@ -140,7 +140,7 @@ smallest number of annotations per protein & 0\\
 average number of annotations per protein & 7.013\\
 highest number of annotations per protein & 184\\
 smallest number of associated proteins per annotatio & 1\\
-average number of associated proteins per annotatio & 7.013\\
+average number of associated proteins per annotatio & 10.302\\
 highest number of associated proteins per annotatio & 1519\\
 \end{tabular}
 \end{table}
@@ -172,7 +172,6 @@ GO:0000011 & 1 & vacuole inheritance\\
 GO:0000032 & 1 & cell wall mannoprotein biosynthetic process\\
 GO:0000053 & 1 &  argininosuccinate metabolic process \\
 GO:0000097 & 1 & sulfur amino acid biosynthetic process\\
-
 \end{tabular}
 \end{table}
 \item Not implemented
@@ -181,6 +180,31 @@ GO:0000097 & 1 & sulfur amino acid biosynthetic process\\
 
 \item Listing \ref{ex2} shows source code.
 \lstinputlisting[tabsize=4, label=ex2,caption={Listing of source code}] {PPIGONetwork.py}
+
+Program output for human network with time measurement:\\
+\texttt{Start program\\
+1. Create Network\\
+2. Initialize Mapping\\
+3. Assign Alternative Names\\
+4. Assign Go terms\\
+Initialization completed\\
+--------------------- Overview ---------------------\\
+Total number of proteins:			17087\\
+Total number of protein interactions:		275472\\
+Number of proteines without GO annotation:	2334 (13.6595072277\%)\\
+Smallest number of GO annotations per protein	0\\
+Average number of GO annotations per protein	7.01293380933\\
+Highest number of GO annotations per protein	184\\
+Smallest number of proteins per GO annotations	1\\
+Average number of proteins per GO annotations	10.3017537827\\
+Highest number of proteins per GO annotations	1519\\
+5 most annotated GO terms:	[('GO:0006355', 740), ('GO:0006357', 937), ('GO:0007165', 980), ('GO:0045944', 1001), ('GO:0006351', 1519)]\\
+5 fewest annotated GO terms:	[('GO:0000003', 1), ('GO:0000011', 1), ('GO:0000032', 1), ('GO:0000053', 1), ('GO:0000097', 1)]\\
+\\
+real	5m56,373s\\
+user	5m53,229s\\
+sys	0m0,304s\\
+}
 
 \end{enumerate}
 \end{document}

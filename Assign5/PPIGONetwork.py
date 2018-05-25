@@ -197,7 +197,7 @@ class Mapping:
 			if temp > values[2]:
 				values[2] = temp
 			values[1] = values[1] + temp
-		values[1] = float(values[1])/float(len(self.mapping.keys()))
+		values[1] = float(values[1])/float(len(self.revsum.keys()))
 		return values
 	
 	def extendedNumber(self, length, number):
