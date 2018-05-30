@@ -1,0 +1,10 @@
+A > A
+A > B
+B > C
+C > B
+C > E
+D | B
+D | E
+D | F
+E > F
+F > D
