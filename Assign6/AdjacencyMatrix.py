@@ -45,6 +45,9 @@ class AdjacencyMatrix:
 		expressed by the number of lables
 		"""
 		return len(self.lables)
+	
+	def getLables(self):
+		return self.lables
 		
 	def show(self):
 		"""

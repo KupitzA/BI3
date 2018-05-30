@@ -36,3 +36,7 @@ trackPropagation(state_c)
 state_d = State(['A','B','C','D','E','F'])
 state_d.setInt(33)
 trackPropagation(state_d)
+
+prop.createStateNetwork()
+print(prop.attractors())
+

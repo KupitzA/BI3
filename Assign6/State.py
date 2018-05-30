@@ -62,6 +62,8 @@ class State:
 		Initializes a state whose binary representation equals the
 		provided integer value
 		"""
+		if value == 0:
+			return
 		binaries = 2**(len(self.lables)-1)
 		pos = len(self.lables) - 1
 		while pos >= 0:
@@ -70,6 +72,7 @@ class State:
 				value -= binaries
 			binaries /= 2
 			pos -= 1
+		return
 	
 	def show(self):
 		"""
