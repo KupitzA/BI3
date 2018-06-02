@@ -113,10 +113,28 @@ Set of basins:\\
 33, 35, 5, 37, 39, 11, 15, 17, 19, 27, 31\\
 Relative coverage: 17.1875\%}
 
-
-
-
-\item Listing \ref{ex1-c} shows source code.
+\item Interpretation:\\
+1) \textcolor{red}{???}\\
+2) Two special are gene A and D. If A is active, the network becomes permanent \"impulses\", keeping the network in motion. Further, D hinders the network to remain fully active, i.g. if gene D is activated, it throws the network back into an earlier state, initiaing the orbiting behavior. This is further ensured since D inactivates its own activating gene.\\
+Table \ref{ex1_tab} shows the two shorter orbits including the genes activation status at each state of the network. The upper described principles, are demonstrated for Orbit 4, where \"A activates the network step by step\" along the regulatory linkages until D gets activated. Afterwards, D inactivates most genes to reset the network to an earlier state.\\
+For Orbit 3, the driving mechanisms are different. Here, B and C activate each other so that only one of both is active at the same time. When C is active, it further activates E what initiates D to inhibit B, E and F after 3 propagations. Since this inhibition occurs when C is active, the orbit closes and starts again. If D would have even distance (number of activating forward linkages), D would inhibit the active B what would turn the complete network inactive. In this case we would not observe orbiting behavior. 
+\begin{table}
+	\caption{Comparison of the two orbits with length 4}
+	\label{ex1_tab}
+	\begin{tabular}{|c|cccccc||c|cccccc|}
+	\hline
+	\multicolumn{7}{|c||}{Orbit 3} & \multicolumn{7}{c|}{Orbit 4}\\
+	\hline
+	Decimal & A & B & C & D & E & F & Decimal & A & B & C & D & E & F\\
+	\hline
+	4  &   &   & X &   &   &   &  5 & X &   & X &   &   &   \\
+	18 &   & X &   &   & X &   & 19 & X & X &   &   & X &   \\
+	36 &   &   & X &   &   & X & 39 & X & X & X &   &   & X\\
+	26 &   & X &   & X & X &   & 31 & X & X & X & X & X &   \\
+	\hline
+	
+	\end{tabular}
+\end{table}
 
 \end{enumerate}
 \exercise{Differential Expression Analysis}
