@@ -1,7 +1,6 @@
 from os.path import exists
 from AdjacencyMatrix import AdjacencyMatrix
 from State import State
-from StateNet import StateNet
 
 class PropagationMatrix:
 	"""
@@ -63,10 +62,22 @@ class PropagationMatrix:
 			prop_state.setByLable(lab_y, 0 if temp <= 0 else 1)
 		return prop_state
 	
+	def size(self):
+		"""
+		Returns the number of states
+		"""
+		return self.matrix.size()
+		
 	def basinsAndAttractor(self, state):
+		"""
+		Track the states obtained by simulating the regulatory
+		network until the states repreat. Return the results divided in
+		orbit states and pure basins
+		"""
 		order = list()
 		order.append(state.getInt())
 		temp = 0
+		# simulate network until repetition starts
 		while True:
 			state = self.propagate(state)
 			temp = state.getInt()
@@ -74,6 +85,7 @@ class PropagationMatrix:
 				order.append(temp)
 			else:
 				break
+		# divide states in upper described distinct subsets
 		result = [[],[]]
 		switch = 0
 		for i in range(0, len(order)):
@@ -82,31 +94,45 @@ class PropagationMatrix:
 				result[1] = order[i:len(order)]
 		return result
 	
-	def createStateNetwork(self):
-		self.net = StateNet(2**self.matrix.size())
-		state = State(self.matrix.getLables())
-		for i in range(0,2**self.matrix.size()):
-			state.setInt(i)
-			state = self.propagate(state)
-			self.net.addEdge(i, state.getInt())
-		
-	def attractors(self):
-		indices = self.net.getKeys()
-		starts = set()
-		for idx in indices:
-			if self.net.getIndegree(idx) == 0:
-				starts.add(idx)
-		self.net.show()
-		print(starts)
-		
-		
-		# old is better?
+	def simplify(self, basatt):
+		"""
+		Simplify redundand and incomplete basins of attractions and
+		orbits
+		"""
+		# Since every state can have only one next propagated state,
+		# a minimum state-value is unique for every orbit and can be
+		# used as key for our simplification
+		attracktors = dict()
+		basins = dict()
+		for ba in basatt:
+			temp = min(ba[1])
+			if not (temp in attracktors.keys()):
+				attracktors[temp] = ba[1]
+				basins[temp] = ba[0]
+			else:
+				basins[temp].extend(ba[0])
+				basins[temp].extend(ba[1])
+		simple = list()
+		for i in attracktors.keys():
+			simple.append([set(basins[i]), attracktors[i]])
+		return simple
+
+	def orbit(self):
+		"""
+		Find basins of attracktion and according orbits
+		"""
+		# Storage for for attracktors and basins
 		periodes = list()
+		# simulate the network starting from every possile state
 		candidates = list(range(0,2**self.matrix.size()))
 		while len(candidates) > 0:
 			state = State(self.matrix.getLables())
 			state.setInt(candidates[0])
+			# simulate regulatory network
 			temp = self.basinsAndAttractor(state)
+			# store obtained results in the according categorie,
+			# further remove observed states from the candidate list
+			# to minimize runtime
 			for basin in temp[0]:
 				if basin in candidates:
 					candidates.remove(basin)
@@ -114,6 +140,6 @@ class PropagationMatrix:
 				if attractor in candidates:
 					candidates.remove(attractor)
 			periodes.append(temp)
-		return periodes
-				
-				
+		# results might contain reduncdancies, therefore a last
+		# simlification step is possible
+		return self.simplify(periodes)			
