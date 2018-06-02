@@ -1,0 +1,124 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{ngerman}  % german documents
+\usepackage{graphicx}  % import graphics einbinden
+\usepackage{listings}  % support source code listing
+\usepackage{amsmath}  % math stuff
+\usepackage{amssymb} % 
+\usepackage{a4wide} % wide pages
+\usepackage{fancyhdr} % nice headers
+\usepackage{tikz} %graphs
+\usetikzlibrary{arrows}
+\lstset{basicstyle=\footnotesize,language=Python,numbers=left, numberstyle=\tiny, stepnumber=5,firstnumber=0, numbersep=5pt} % set up listings
+\pagestyle{fancy}             % header
+\setlength{\parindent}{0pt}   % no indentation
+
+\usepackage[pdfpagemode=None, colorlinks=true,  % url coloring
+           linkcolor=blue, urlcolor=blue, citecolor=blue, plainpages=false, 
+           pdfpagelabels,unicode]{hyperref}
+           
+% change enums style: first level (a), (b), (c)           
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+
+%lecture name
+\newcommand{\lecture}{
+	Bioinformatics III
+}           
+
+%assignment iteration
+\newcommand{\assignment}{
+	Sixth Assignment
+}
+
+%set up names, matricle number, and email
+\newcommand{\authors}{
+  \begin{tabular}{rl}
+    \href{mailto:s9alfloh@stud.uni-saarland.de}{Alexander Flohr} & (2549738)\\
+    \href{mailto:s9ankupi@stud.uni-saarland.de}{Andrea Kupitz} & (2550260)
+  \end{tabular}
+}
+
+% use to start a new exercise
+\newcommand{\exercise}[1]
+{
+  \stepcounter{subsection}
+  \subsection*{Exercise \thesubsection: #1}
+
+}
+
+\begin{document}
+\title{\Large \lecture \\ \textbf{\normalsize \assignment}}
+\author{\authors}
+
+\setlength \headheight{25pt}
+\fancyhead[R]{\begin{tabular}{r}\lecture \\ \assignment \end{tabular}}
+\fancyhead[L]{\authors}
+
+
+\setcounter{section}{5} % modify for later sheets, i.e. 2, 3, ...
+%\section{Introduction to Python and some Network Properties} % optional, note that section invocation sets the section counter + 1, so adapt the setcounter command
+\maketitle
+
+\exercise{Boolean Networks}
+\begin{enumerate}
+\item Listing \ref{ex1-a1} shows the source code of our propagation matrix class, which behaves like such a matrix. Internally it uses a adjacency matrix to efficiently calculate next states. Therefore it depends on the class AdjacencyMatrix shown in Listing \ref{ex1-a2}. Further, the networks states are encoded in the class State, see \ref{ex1-a3}.
+\lstinputlisting[tabsize=4, label=ex1-a1,caption={Listing of source code}] {PropagationMatrix.py}
+\lstinputlisting[tabsize=4, label=ex1-a2,caption={Listing of source code}] {AdjacencyMatrix.py}
+\lstinputlisting[tabsize=4, label=ex1-a3,caption={Listing of source code}] {State.py}
+\newpage
+\item Listing \ref{ex1-b} shows source code applying the the functiionality of the code shown in Listing \ref{ex1-a1}, which includes the network simulation.\\
+
+1) It makes sense to stop the propagation when a state is observed a second time, from then on we will only observe orbiting behavior of the network states. The results of 2) are shown in this way. e.g. the first repeting state is the last shown.\\
+
+2) Programs output for the required initial states:\\
+\texttt{Initial state 1:\\
+1 -> 3 -> 7 -> 23 -> 55 -> 63 -> 13 -> 1\\
+\\
+Initial state 4:\\
+4 -> 18 -> 36 -> 26 -> 4\\
+\\
+Initial state 21:\\
+21 -> 51 -> 47 -> 13 -> 1 -> 3 -> 7 -> 23 -> 55 -> 63 -> 13\\
+\\
+Initial state 33:\\
+33 -> 11 -> 5 -> 19 -> 39 -> 31 -> 5\\
+}
+
+\lstinputlisting[tabsize=4, label=ex1-b,caption={Listing of source code}] {ex_6_1.py}
+
+\item Output of the progam listing the orbits:\\
+\texttt{Orbit 1 with length 1:\\
+0\\
+Set of basins:\\
+0, 6, 8, 12, 16, 20, 22, 24, 28, 32, 34, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62\\
+Relative coverage: 35.9375\%\\
+\\
+Orbit 2 with length 7:\\
+1, 3, 7, 23, 55, 63, 13\\
+Set of basins:\\
+1, 3, 7, 9, 13, 21, 23, 25, 29, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63\\
+Relative coverage: 32.8125\%\\
+\\
+Orbit 3 with length 4:\\
+4, 18, 36, 26\\
+Set of basins:\\
+2, 4, 36, 38, 10, 14, 18, 26, 30\\
+Relative coverage: 14.0625\%\\
+\\
+Orbit 4 with length 4:\\
+5, 19, 39, 31\\
+Set of basins:\\
+33, 35, 5, 37, 39, 11, 15, 17, 19, 27, 31\\
+Relative coverage: 17.1875\%}
+
+
+
+
+\item Listing \ref{ex1-c} shows source code.
+
+\end{enumerate}
+\exercise{Differential Expression Analysis}
+
+\end{document}

@@ -20,7 +20,7 @@ prop = PropagationMatrix("net.txt")
 # initialize with the state integer 13
 state_a = State(['A','B','C','D','E','F'])
 print("                        Exercise 6.1 b)                        ")
-print("███████████████████████████████████████████████████████████████")
+print("_______________________________________________________________")
 print("\nInitial state 1:")
 state_a.setInt(1)
 trackPropagation(state_a, 8)
@@ -45,7 +45,7 @@ trackPropagation(state_d, 7)
 
 print()
 print("                        Exercise 6.1 c)                        ")
-print("███████████████████████████████████████████████████████████████")
+print("_______________________________________________________________")
 orbits = prop.orbit()
 for i in range(0, len(orbits)):
 	print()
