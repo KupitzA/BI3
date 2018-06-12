@@ -35,7 +35,7 @@ updateVariance <- function(p_from, p_to) {
   for (i in 1:length(p_from)) {
     square_dist <- mtrx[p_from[i], p_to[i]] - mtrx[1, p_to[i]]
     square_dist <- square_dist**2
-    curr_variance[p_to[i]] <- square_dist
+    curr_variance[p_to[i]] <- curr_variance[p_to[i]] + square_dist
     counter[p_to[i]] <- counter[p_to[i]] + 1
   }
   for(i in 1:length(curr_variance)){
@@ -93,26 +93,59 @@ refine <- function() {
   updateWildType(p_from, p_to)
 }
 
+# sort matrices by last column
+sortMtrx <- function(m){
+  for(i in 2:nrow(m)){
+    if(m[i,3] < m[i-1,3]){
+      temp = m[i,]
+      m[i,] = m[i-1,]
+      m[i-1,] <- temp
+      m = sortMtrx(m)
+    }
+  }
+  return(m)
+}
+
+# output function
+# looks more complicated than it is
 output <- function(){
+  counter <- 0
   for (b in 1:nrow(mtrx_prob)) {
     for (a in 1:ncol(mtrx_prob)) {
       if (mtrx_prob[b, a] < 0.05) {
-        cat(colnames(mtrx)[b], "\t",
-            colnames(mtrx)[a], "\t",
-            mtrx_prob[b,a], "\n")
+        counter <- counter + 1
       }
     }
+  }
+  outcome <- matrix(NA, nrow = counter, ncol = 3)
+  colnames(outcome) <- c("Gene A", "Gene B", "Probability")
+  counter <- 1
+  for (b in 1:nrow(mtrx_prob)) {
+    for (a in 1:ncol(mtrx_prob)) {
+      if (mtrx_prob[b, a] < 0.05) {
+        outcome[counter, 1] <- b
+        outcome[counter, 2] <- a
+        outcome[counter, 3] <- round(mtrx_prob[b,a], digits = 8)
+        counter <- counter + 1
+      }
+    }
+  }
+  outcome = sortMtrx(outcome)
+  for(i in 1:nrow(outcome)){
+    cat("G", outcome[i,1], "\tG", outcome[i,2],
+        "\t", outcome[i,3], "\n", sep = "")
   }
 }
 
 # Main
-iterations <- 1
+iterations <- 1000
 initializeVariance()
 
 for (i in 1:iterations) {
-  # First part of Noise model step (1)
+  # Steps of Noise model
   # calculate probabilities for each pair of genes
   probabilities()
+  # refine modle
   refine()
 }
 output()
