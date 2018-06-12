@@ -73,7 +73,6 @@ updateWildType <- function(p_from, p_to){
   }
 }
 
-
 refine <- function() {
   # Noise model iterative step (1)
   # search gene pairs for refining the error modle

@@ -106,6 +106,22 @@ Figures \ref{fig-5}, \ref{fig-6}, \ref{fig-7} show the imputated data with incre
 \end{figure}
 \end{enumerate}
 
+\newpage
 \exercise{DREAM challenge}
+Listing \ref{ex2} shows the R implementation of the noise modle. We used 1000 iterations to refine the modle.
+\lstinputlisting[tabsize=4, label=ex2,caption={Listing of source code}] {ex_7_2.R}
+
+Output:\\
+\texttt{G7	G10	0\\
+G4	G6	0.00282553\\
+G2	G6	0.01111409\\
+G3	G6	0.01395305\\
+G6	G5	0.02255766\\
+G10	G5	0.02255766\\
+G5	G6	0.02788807\\
+G6	G7	0.04557906\\
+G8	G7	0.04557906\\
+}
+Less iterations could increase the number of predicted links bout might be less precise.
 
 \end{document}
