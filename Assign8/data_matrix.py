@@ -99,8 +99,7 @@ class DataMatrix:
             values = [value for (key, value) in sorted(self.get_rows().items())]
             keys = sorted(self.get_rows().keys())
             for i in range(0, len(values)):
-                s = ''
-                s += keys[i] + '\t'
+                s = keys[i] + '\t'
                 for j in values[i][0]:
                     s += str(j) + '\t'
                 s += '\n'

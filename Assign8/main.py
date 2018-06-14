@@ -7,10 +7,10 @@ from cluster import CorrelationClustering
 def exercise_1():
     DM1 = DataMatrix('expression.tsv')
     DM1.to_tsv('Flohr_Kupitz_expression.tsv')
-    print(DM1.not_normal_distributed(0.05, True))
+    print(len(DM1.not_normal_distributed(0.05, True)))
     DM2 = DataMatrix('methylation.tsv')
     DM2.to_tsv('Flohr_Kupitz_methylation.tsv')
-    print(DM2.not_normal_distributed(0.05, True))
+    print(len(DM2.not_normal_distributed(0.05, True)))
 
 def exercise_3():
     # TODO

@@ -1,0 +1,97 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{ngerman}  % german documents
+\usepackage{graphicx}  % import graphics einbinden
+\usepackage{listings}  % support source code listing
+\usepackage{amsmath}  % math stuff
+\usepackage{amssymb} % 
+\usepackage{a4wide} % wide pages
+\usepackage{fancyhdr} % nice headers
+\usepackage{tikz} %graphs
+\usetikzlibrary{arrows}
+\lstset{basicstyle=\footnotesize,language=Python,numbers=left, numberstyle=\tiny, stepnumber=5,firstnumber=0, numbersep=5pt} % set up listings
+\pagestyle{fancy}             % header
+\setlength{\parindent}{0pt}   % no indentation
+
+\usepackage[pdfpagemode=None, colorlinks=true,  % url coloring
+           linkcolor=blue, urlcolor=blue, citecolor=blue, plainpages=false, 
+           pdfpagelabels,unicode]{hyperref}
+           
+% change enums style: first level (a), (b), (c)           
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+
+%lecture name
+\newcommand{\lecture}{
+	Bioinformatics III
+}           
+
+%assignment iteration
+\newcommand{\assignment}{
+	Eigth Assignment
+}
+
+%set up names, matricle number, and email
+\newcommand{\authors}{
+  \begin{tabular}{rl}
+    \href{mailto:s9alfloh@stud.uni-saarland.de}{Alexander Flohr} & (2549738)\\
+    \href{mailto:s9ankupi@stud.uni-saarland.de}{Andrea Kupitz} & (2550260)
+  \end{tabular}
+}
+
+% use to start a new exercise
+\newcommand{\exercise}[1]
+{
+  \stepcounter{subsection}
+  \subsection*{Exercise \thesubsection: #1}
+
+}
+
+\begin{document}
+\title{\Large \lecture \\ \textbf{\normalsize \assignment}}
+\author{\authors}
+
+\setlength \headheight{25pt}
+\fancyhead[R]{\begin{tabular}{r}\lecture \\ \assignment \end{tabular}}
+\fancyhead[L]{\authors}
+
+
+\setcounter{section}{8} % modify for later sheets, i.e. 2, 3, ...
+%\section{Introduction to Python and some Network Properties} % optional, note that section invocation sets the section counter + 1, so adapt the setcounter command
+\maketitle
+
+\exercise{Data Preprocessing}
+\begin{enumerate}
+\item \lstinputlisting[tabsize=4, label=ex1-a1,caption={Listing of source code}] {data_matrix.py}
+Listing \ref{ex1-a1} shows the source code.
+\item \lstinputlisting[tabsize=4, label=ex1-a2,caption={Listing of source code}] {main.py}
+Listing \ref{ex1-a2} shows the source code.\\
+The number of genes and samples whose data does not follow a normal distribution for the expression data is 74 and for the methylation data is 66.
+\end{enumerate}
+
+\newpage
+\exercise{Correlation Measures}
+\begin{enumerate}
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\newpage
+\exercise{Gene Co–Expression Networks}
+\begin{enumerate}
+\item
+\item
+\item
+\end{enumerate}
+
+\newpage
+\exercise{Hierarchical Clustering}
+\begin{enumerate}
+\item
+\item
+\item
+\end{enumerate}
+\end{document}
