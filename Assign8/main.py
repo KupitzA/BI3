@@ -12,10 +12,19 @@ def exercise_1():
     DM2.to_tsv('Flohr_Kupitz_methylation.tsv')
     print(len(DM2.not_normal_distributed(0.05, True)))
 
-def exercise_3():
-    # TODO
-    pass
-
+def exercise_3(threshold):
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('expression.tsv'), 'Pearson', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_expression_network_pearson.sif')
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('expression.tsv'), 'Spearman', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_expression_network_spearman.sif')
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('expression.tsv'), 'Kendall', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_expression_network_kendall.sif')
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('methylation.tsv'), 'Pearson', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_methylation_network_pearson.sif')
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('methylation.tsv'), 'Spearman', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_methylation_network_spearman.sif')
+    CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('methylation.tsv'), 'Kendall', True), threshold)
+    CN1.to_sif('Flohr_Kupitz_methylation_network_kendall.sif')
 
 def exercise_4():
     # TODO
