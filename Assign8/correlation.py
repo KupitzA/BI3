@@ -139,7 +139,7 @@ def kendall_correlation(x, y):
     score1 = float(concordant - discordant)
     score2 = float(concordant + discordant + tied_x)
     score3 = float(concordant + discordant + tied_y)
-    if(score1*score2*score3 == 0):
+    if score1*score2*score3 == 0:
         return 0
     else:
         return score1/math.sqrt(score2 * score3)
