@@ -7,4 +7,5 @@ y = [3,  1, 20, 11,  1,  2,  5,  3]
 x_r = correlation.rank(x)
 print(x)
 print(x_r)
-
+print(correlation.pearson_correlation(x,y))
+print(correlation.spearman_correlation(x,y))

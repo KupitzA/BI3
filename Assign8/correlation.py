@@ -1,9 +1,10 @@
 from itertools import combinations
 from copy import copy
+import math
 
-def computeIndex(vec):
+def computeMean(vec):
 	"""
-	Compute the idices for a subsequenc of equal values
+	Compute the mean for a list
 	"""
 	temp = 0
 	for i in vec:
@@ -21,7 +22,7 @@ def initializeIndices(x_s):
 	i = 0
 	for j in range(1, len(x_s)):
 		if x_s[i] != x_s[j]:
-			index = computeIndex(x_r[i:j])
+			index = computeMean(x_r[i:j])
 			while i < j:
 				x_r[i] = index
 				i += 1
@@ -66,15 +67,38 @@ def pearson_correlation(x, y):
     :param y: a list of values
     :return: Pearson correlation coefficient of X and Y
     """
-    # TODO
-
+    mean_x = computeMean(x)
+    mean_y = computeMean(y)
+    
+    # covariance
+    upper = 0
+    for i in range(0,len(x)):
+        upper += (x[i] - mean_x) * (y[i] - mean_y)
+    lower_left = 0
+    
+    # standard deviation of x
+    for i in range(0,len(x)):
+        lower_left += (x[i] - mean_x) * (x[i] - mean_x)
+    lower_left = math.sqrt(lower_left)
+    
+    # standard deviation of y
+    lower_right = 0
+    for i in range(0,len(y)):
+        lower_right += (y[i] - mean_y) * (y[i] - mean_y)
+    lower_right = math.sqrt(lower_right)
+    
+    # pearson-correlation formula
+    return (upper/(lower_left*lower_right))
+	
 def spearman_correlation(x, y):
     """
     :param x: a list of values
     :param y: a list of values
     :return: Spearman correlation coefficient of X and Y
     """
-    # TODO
+    rank_x = rank(x)
+    rank_y = rank(y)
+    return pearson_correlation(rank_x, rank_y)
 
 
 def kendall_correlation(x, y):
