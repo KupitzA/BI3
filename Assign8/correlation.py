@@ -107,8 +107,39 @@ def kendall_correlation(x, y):
     :param y: a list of values
     :return: Kendall-B correlation coefficient of X and Y
     """
-    # TODO
-
+    # processing part (1)
+    rank_x = rank(x)
+    rank_y = rank(y)
+    
+    # processing part (2)
+    pairing = []
+    for i in range(0, len(x)):
+        pairing.append((rank_x[i], rank_y[i]))
+    
+    # processing part (3)
+    concordant = 0
+    discordant = 0
+    tied_x = 0
+    tied_y = 0
+    for i in range(0,len(pairing)):
+        for j in range(0,len(pairing)):
+            if i != j:
+                (a,b) = pairing[i]
+                (c,d) = pairing[j]
+                if (a < b and c < d) or (a > b and c > d):
+                    concordant += 1
+                elif (a < b and c > d) or (a > b and c < d):
+                    discordant += 1
+                elif (a == b and c != d):
+                    tied_x += 1
+                elif (a != b and c == d):
+                    tied_y += 1
+    
+    # processing part (4)
+    score1 = float(concordant - discordant)
+    score2 = float(concordant + discordant + tied_x)
+    score3 = float(concordant + discordant + tied_y)
+    return score1/math.sqrt(score2 * score3)
 
 class CorrelationMatrix(dict):
     """
