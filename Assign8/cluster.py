@@ -43,7 +43,11 @@ class CorrelationClustering:
         """
         :return: average linkage between cluster 1 and cluster 2
         """
-        # TODO
+        l = 0
+        for i in range(0,len(cluster_1)):
+			for j in range(0,len(cluster_2)):
+				l += abs(cluster_1[i]-cluster_2[j])
+		return l/float(len(cluster_1)*len(cluster_2))
 
     def trace_to_tsv(self, file_path):
         """
