@@ -58,7 +58,7 @@ class DataMatrix:
         rows = dict()
         for k, v in self.rows.items():
             rows[k] = v[0]
-        return self.rows
+        return rows
 
     def get_columns(self):
         """
@@ -100,7 +100,7 @@ class DataMatrix:
             keys = sorted(self.get_rows().keys())
             for i in range(0, len(values)):
                 s = keys[i] + '\t'
-                for j in values[i][0]:
+                for j in values[i]:
                     s += str(j) + '\t'
                 s += '\n'
                 f.write(s)

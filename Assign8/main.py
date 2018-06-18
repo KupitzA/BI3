@@ -12,7 +12,7 @@ def exercise_1():
     DM2.to_tsv('Flohr_Kupitz_methylation.tsv')
     print(len(DM2.not_normal_distributed(0.05, True)))
 
-def exercise_3(threshold):
+def exercise_3(threshold=0.75):
     CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('expression.tsv'), 'Pearson', True), threshold)
     CN1.to_sif('Flohr_Kupitz_expression_network_pearson.sif')
     CN1 = CorrelationNetwork(CorrelationMatrix(DataMatrix('expression.tsv'), 'Spearman', True), threshold)

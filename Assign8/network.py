@@ -37,10 +37,13 @@ class CorrelationNetwork:
         with open(file_path, 'w') as f:
             values = [value for (key, value) in sorted(self.nodes.items())]
             keys = sorted(self.nodes.keys())
-            for node1id in keys:
-                for node2id in values[0][node1id].nodelist:
-                    if node2id > node1id:
-                        s = str(node1id) + '\t'
-                        s += str(round(self.cor[(node1id, values[0][keys[i]])]), 2) + '\t'
+            written = []
+            s = ''
+            for position, value in enumerate(keys):
+                for node2id in values[position].nodelist:
+                    if node2id not in written: #and node2id != value:
+                        s = str(value) + '\t'
+                        s += str(round(self.cor[(value, node2id.id)], 2)) + '\t'
                         s += str(node2id) + '\n'
+                    written.append(node2id)
                 f.write(s)
